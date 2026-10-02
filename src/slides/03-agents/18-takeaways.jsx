@@ -1,9 +1,10 @@
+import { Bot, Network, Plug, Handshake } from 'lucide-react'
 import { Slide, Reveal, Em } from '../../components'
 
 export const meta = {
   title: 'Agents: key takeaways',
   steps: 3,
-  notes: `Four lines to remember. One per click, say each slowly.
+  notes: `Four lines to remember. They build in one by one; say each slowly.
 
 - **Agents = reasoning + tools** (plus memory and a loop)
 - **Orchestration = teamwork for AIs**: supervisor, sequential, swarm, mixture, debate
@@ -16,10 +17,10 @@ export const meta = {
 }
 
 const items = [
-  { k: 'Agents', v: 'reasoning + tools', icon: '🤖', s: 'LLM + tools + memory, running in a loop' },
-  { k: 'Orchestration', v: 'teamwork for AIs', icon: '🎛️', s: 'Supervisor · sequential · swarm · mixture · debate' },
-  { k: 'MCP', v: 'standardises context', icon: '🔌', s: 'Tools, resources and prompts, plugged in once' },
-  { k: 'A2A', v: 'standardises collaboration', icon: '🤝', s: 'Agent cards, tasks and artifacts across vendors' },
+  { k: 'Agents', v: 'reasoning + tools', icon: <Bot />, s: 'LLM + tools + memory, running in a loop' },
+  { k: 'Orchestration', v: 'teamwork for AIs', icon: <Network />, s: 'Supervisor · sequential · swarm · mixture · debate' },
+  { k: 'MCP', v: 'standardises context', icon: <Plug />, s: 'Tools, resources and prompts, plugged in once' },
+  { k: 'A2A', v: 'standardises collaboration', icon: <Handshake />, s: 'Agent cards, tasks and artifacts across vendors' },
 ]
 
 export default function Takeaways() {

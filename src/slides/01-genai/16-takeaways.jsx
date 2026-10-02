@@ -11,7 +11,7 @@ export const meta = {
 4. It **hallucinates** and **can't act** on its own
 5. RAG, tools and good prompts are how we make it reliable
 
-(click) **Transition:** "Everything the model does starts with what *you* type. So the cheapest, highest-return skill you can learn this year is… prompting. Let's go."`,
+**Transition:** "Everything the model does starts with what *you* type. So the cheapest, highest-return skill you can learn this year is… prompting. Let's go."`,
 }
 
 const points = [

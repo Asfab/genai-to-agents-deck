@@ -1,4 +1,5 @@
-import { Slide, Reveal, Stagger, Em, Label } from '../../components'
+import { Slide, Reveal, Stagger, Em, Label, Icon } from '../../components'
+import { Type, Image, Mic, Video, FileText, Code2, Volume2, Film, Brain, Camera, MonitorX } from 'lucide-react'
 
 export const meta = {
   title: 'Multimodal',
@@ -6,7 +7,7 @@ export const meta = {
   notes: `Modern models are **multimodal**: they take in, and produce, more than text.
 
 - Images, audio, video and documents get turned into tokens too — same next-token idea underneath
-- (click) Concrete things students can do *today*:
+- Then the examples build in along the bottom — concrete things students can do *today*:
   - Photo of a circuit diagram → step-by-step explanation
   - Malayalam voice note → English summary
   - Screenshot of a red error → the likely fix
@@ -16,17 +17,17 @@ export const meta = {
 **Transition:** "Let's zoom out to where this is genuinely useful — for you, now."`,
 }
 
-const ins = [['📝', 'Text'], ['🖼️', 'Images'], ['🎙️', 'Audio'], ['🎬', 'Video'], ['📄', 'PDFs']]
-const outs = [['📝', 'Text'], ['💻', 'Code'], ['🖼️', 'Images'], ['🔊', 'Speech'], ['🎞️', 'Video']]
+const ins = [[Type, 'Text'], [Image, 'Images'], [Mic, 'Audio'], [Video, 'Video'], [FileText, 'PDFs']]
+const outs = [[Type, 'Text'], [Code2, 'Code'], [Image, 'Images'], [Volume2, 'Speech'], [Film, 'Video']]
 const examples = [
-  { a: '📸 Circuit diagram photo', b: 'Step-by-step explanation' },
-  { a: '🎙️ Malayalam voice note', b: 'English summary' },
-  { a: '🖥️ Screenshot of an error', b: 'The likely fix' },
+  { icon: Camera, a: 'Circuit diagram photo', b: 'Step-by-step explanation' },
+  { icon: Mic, a: 'Malayalam voice note', b: 'English summary' },
+  { icon: MonitorX, a: 'Screenshot of an error', b: 'The likely fix' },
 ]
 
 const Chip = ([icon, label]) => (
   <div key={label} className="card" style={{ flexDirection: 'row', alignItems: 'center', gap: 20, padding: '14px 26px', flex: 1 }}>
-    <span style={{ fontSize: 40, lineHeight: 1 }}>{icon}</span><span className="h3">{label}</span>
+    <Icon of={icon} /><span className="h3">{label}</span>
   </div>
 )
 
@@ -41,7 +42,7 @@ export default function Multimodal() {
         <Reveal as="fade" delay={0.5} className="flow-arrow" style={{ width: 110 }}>→</Reveal>
         <Reveal as="scale" delay={0.3} style={{ flex: 1, display: 'flex' }}>
           <div className="card tint" style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 24, textAlign: 'center' }}>
-            <span style={{ fontSize: 96, lineHeight: 1 }}>🧠</span>
+            <span className="icon-chip" style={{ width: 128, height: 128, borderRadius: 28, background: 'var(--surface)' }}><Brain size={64} strokeWidth={1.4} style={{ width: 64, height: 64 }} /></span>
             <div className="h2">Multimodal LLM</div>
             <div className="body">Everything becomes tokens.<br />Same next-token idea.</div>
           </div>
@@ -55,7 +56,7 @@ export default function Multimodal() {
       <Stagger at={1} className="grid" gap={0.1} style={{ gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', flex: 'none' }}>
         {examples.map((e) => (
           <div key={e.a} className="card ink" style={{ flex: 1, padding: '24px 32px', gap: 8 }}>
-            <div className="card-title" style={{ fontSize: 30 }}>{e.a}</div>
+            <div className="row" style={{ gap: 14, alignItems: 'center' }}><Icon of={e.icon} style={{ color: 'var(--surface)' }} /><div className="card-title" style={{ fontSize: 30 }}>{e.a}</div></div>
             <div className="card-text">→ {e.b}</div>
           </div>
         ))}

@@ -1,12 +1,13 @@
-import { Slide, Reveal, Em, Label } from '../../components'
+import { MessageSquare, Bot } from 'lucide-react'
+import { Slide, Reveal, Em, Label, Icon } from '../../components'
 
 export const meta = {
   title: 'Chatbot vs agent',
   steps: 1,
   notes: `Same request, two very different outcomes.
 
-- **Chatbot** (entry): one reply, training data only, gives you text, *you* do the work
-- **Agent** (click 1): plans many steps, uses live data via tools, takes action, *you* approve
+- **Chatbot** (builds first): one reply, training data only, gives you text, *you* do the work
+- **Agent** (slides in next): plans many steps, uses live data via tools, takes action, *you* approve
 
 Point at the bottom boxes: the chatbot hands you a list; the agent hands you a PNR.
 
@@ -25,7 +26,7 @@ const rows = [
 const Side = ({ variant, icon, name, tagline, items, result, resultClass }) => (
   <div className={`card ${variant}`} style={{ flex: 1, padding: '40px 44px', gap: 26 }}>
     <div className="row" style={{ gap: 18, alignItems: 'center' }}>
-      <span className="icon">{icon}</span>
+      <Icon of={icon} chip style={variant === 'tint' ? { background: 'var(--surface)' } : undefined} />
       <div className="col" style={{ gap: 6 }}>
         <div className="h2">{name}</div>
         <div className="body">{tagline}</div>
@@ -50,13 +51,13 @@ export default function ChatbotVsAgent() {
       </div>
       <div className="row fill" style={{ gap: 28, alignItems: 'stretch' }}>
         <Reveal as="right" style={{ display: 'flex', flex: 1 }}>
-          <Side variant="flat" icon="💬" name="LLM chatbot" tagline="You ask. It answers."
+          <Side variant="flat" icon={MessageSquare} name="LLM chatbot" tagline="You ask. It answers."
             items={rows.map((r) => r[0])}
             result={'"Here are some trains you could check on the IRCTC site…"'} resultClass="bad" />
         </Reveal>
         <Reveal as="fade" className="center-all" style={{ width: 56 }}><span className="h3 muted">vs</span></Reveal>
         <Reveal at={1} as="left" style={{ display: 'flex', flex: 1 }}>
-          <Side variant="tint" icon="🤖" name="AI agent" tagline="You set a goal. It gets it done."
+          <Side variant="tint" icon={Bot} name="AI agent" tagline="You set a goal. It gets it done."
             items={rows.map((r) => r[1])}
             result={'"6:15 pm sleeper, ₹485, 42 seats left. Book it?"'} resultClass="good" />
         </Reveal>

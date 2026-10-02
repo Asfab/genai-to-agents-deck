@@ -4,13 +4,13 @@ import { Supervisor, Sequential, Swarm, Mixture, Debate } from './parts/patterns
 export const meta = {
   title: 'Orchestration patterns',
   steps: 4,
-  notes: `Five patterns you'll see in every framework. One per click; don't go deep, the next slides are worked examples.
+  notes: `Five patterns you'll see in every framework. They build in left to right; don't go deep, the next slides are worked examples.
 
 - **Supervisor**: a boss agent splits work, routes to specialists, merges results
 - **Sequential**: assembly line; output of one is input to the next (e.g. CSV → clean → analyse → report)
 - **Swarm**: no boss; agents hand off to whichever peer fits best
 - **Mixture of Agents**: layers of agents each refine the answer; an aggregator combines them
-- **Debate**: agents argue opposite sides, a judge decides ("Wayanad or Munnar for a weekend from Kozhikode?")
+- **Debate**: agents A and B argue opposite sides, a judge (J) decides ("Wayanad or Munnar for a weekend from Kozhikode?")
 
 Bonus: ReAct (last slides) is the pattern *inside* each agent.
 

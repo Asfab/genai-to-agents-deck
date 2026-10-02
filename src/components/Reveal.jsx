@@ -9,14 +9,14 @@ import { ease, variants } from './motion'
  *            Remember to set meta.steps to the highest `at` used on the slide.
  *   delay  – seconds after it is revealed
  *   as     – variant: up | down | left | right | fade | scale | blur
- *   dim    – when a later step is showing, fade this to 35% (focus effect)
+ *   dim    – while a later step is building, fade this to 35%; un-dims once the slide is fully built
  */
 export function Reveal({ at = 0, delay = 0, as = 'up', dim, className, style, children, tag = 'div' }) {
-  const { step } = useSlide()
+  const { step, steps } = useSlide()
   const shown = step >= at
   const Tag = motion[tag]
   const v = variants[as]
-  const target = shown ? { ...v.shown, opacity: dim && step > at ? 0.35 : 1 } : v.hidden
+  const target = shown ? { ...v.shown, opacity: dim && step > at && step < steps ? 0.35 : 1 } : v.hidden
   return (
     <Tag className={className} style={style} initial={v.hidden} animate={target}
       transition={{ duration: 0.65, ease, delay: shown ? delay : 0 }}>

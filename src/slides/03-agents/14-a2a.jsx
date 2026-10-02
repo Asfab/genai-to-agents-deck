@@ -1,3 +1,4 @@
+import { Luggage, TrainFront } from 'lucide-react'
 import { Slide, Reveal, Em } from '../../components'
 import { Stage, Pos, Wires, Wire, Node, Tag } from './parts/kit'
 
@@ -8,7 +9,7 @@ export const meta = {
 
 **A2A (Agent2Agent)**: open protocol launched by Google in April 2025, now under the Linux Foundation. IBM's own ACP protocol merged into it.
 
-Walk the conversation (one click each):
+The conversation builds message by message; walk it:
 
 - **Discover**: fetch the other agent's *Agent Card*: who it is, its skills, endpoint, auth
 - **Card**: "I can book_ticket"
@@ -41,10 +42,10 @@ export default function A2A() {
           ))}
         </Wires>
         <Pos x={0} y={20} w={440} h={430} as="right">
-          <Node variant="tint" icon="🧳" title="Trip planner agent" sub="Your company · built with LangGraph"><span className="mono small accent" style={{ marginTop: 12 }}>skills: plan_trip</span></Node>
+          <Node variant="tint" icon={<Luggage />} title="Trip planner agent" sub="Your company · built with LangGraph"><span className="mono small accent" style={{ marginTop: 12 }}>skills: plan_trip</span></Node>
         </Pos>
         <Pos x={1288} y={20} w={440} h={430} as="left">
-          <Node variant="flat" icon="🚆" title="Rail booking agent" sub="Another company · different stack"><span className="mono small accent" style={{ marginTop: 12 }}>skills: book_ticket</span></Node>
+          <Node variant="flat" icon={<TrainFront />} title="Rail booking agent" sub="Another company · different stack"><span className="mono small accent" style={{ marginTop: 12 }}>skills: book_ticket</span></Node>
         </Pos>
         {msgs.map((m, i) => (
           <Pos key={i} x={480} y={m.y + 4} w={768} h={44} at={i + 1} delay={0.3} as="fade" style={{ justifyContent: 'center' }}>

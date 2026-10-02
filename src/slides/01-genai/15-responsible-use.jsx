@@ -1,4 +1,5 @@
 import { Slide, Stagger, Em } from '../../components'
+import { ScanSearch, Scale, Lock, Copyright, GraduationCap, UserCheck } from 'lucide-react'
 import IconCard from './parts/IconCard'
 
 export const meta = {
@@ -19,12 +20,12 @@ export const meta = {
 }
 
 const items = [
-  { icon: '🔍', title: 'Verify', text: 'Treat output as a first draft, not a textbook.' },
-  { icon: '⚖️', title: 'Watch for bias', text: 'It learned from human text — stereotypes included.' },
-  { icon: '🔒', title: 'Protect privacy', text: 'No Aadhaar, passwords or company code in public bots.' },
-  { icon: '©️', title: 'Give credit', text: 'Say when AI helped. Respect copyright.' },
-  { icon: '🧠', title: 'Learn with it', text: "Not around it. Don't outsource the skill you're here to build." },
-  { icon: '🧑‍⚖️', title: 'Human in charge', text: 'The higher the stakes, the more a person must check.' },
+  { icon: ScanSearch, title: 'Verify', text: 'Treat output as a first draft, not a textbook.' },
+  { icon: Scale, title: 'Watch for bias', text: 'It learned from human text — stereotypes included.' },
+  { icon: Lock, title: 'Protect privacy', text: 'No Aadhaar, passwords or company code in public bots.' },
+  { icon: Copyright, title: 'Give credit', text: 'Say when AI helped. Respect copyright.' },
+  { icon: GraduationCap, title: 'Learn with it', text: "Not around it. Don't outsource the skill you're here to build." },
+  { icon: UserCheck, title: 'Human in charge', text: 'The higher the stakes, the more a person must check.' },
 ]
 
 export default function Responsible() {

@@ -1,19 +1,18 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLayoutEffect, useRef, useState } from 'react'
-import { useSlide } from '../../../engine/SlideContext'
 import { ease } from '../../../components'
 
 // "it" attends to different words depending on the last word of the sentence.
+// `which` picks the variant (0 = tired → animal, 1 = wide → street); the slide loops it.
 const BASE = ['The', 'animal', "didn't", 'cross', 'the', 'street', 'because', 'it', 'was', 'too']
 const IT = 7
-const VARIANTS = [
-  { last: 'tired.', weights: { 1: 0.9, 5: 0.15, 0: 0.08 } },
-  { last: 'wide.', weights: { 5: 0.9, 1: 0.15, 4: 0.08 } },
+export const VARIANTS = [
+  { last: 'tired.', refers: 'the animal', weights: { 1: 0.9, 5: 0.15, 0: 0.08 } },
+  { last: 'wide.', refers: 'the street', weights: { 5: 0.9, 1: 0.15, 4: 0.08 } },
 ]
 
-export default function Attention() {
-  const { step } = useSlide()
-  const v = VARIANTS[Math.min(step, 1)]
+export default function Attention({ which = 0 }) {
+  const v = VARIANTS[which % VARIANTS.length]
   const words = [...BASE, v.last]
   const box = useRef(null)
   const refs = useRef([])

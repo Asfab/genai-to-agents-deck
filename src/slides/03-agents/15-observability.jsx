@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { ListTree, Timer, CircleCheck, UserCheck } from 'lucide-react'
 import { Slide, Reveal, Em, Label } from '../../components'
 import { ease } from '../../components/motion'
 
@@ -9,7 +10,7 @@ export const meta = {
 
 Left: a real-looking **trace** of our train-booking agent. Every LLM call and tool call is a span with time and tokens. When something breaks you replay this, not guess.
 
-Four things to watch (one per click):
+Four things to watch (they build in one by one):
 
 - **Reasoning traces**: what it saw, what it chose, why
 - **Latency & tokens**: where time and money go; catch runaway loops
@@ -35,10 +36,10 @@ const spans = [
 ]
 
 const pillars = [
-  { icon: '🧵', t: 'Reasoning traces', d: 'What it saw, chose, and why' },
-  { icon: '⏱️', t: 'Latency & tokens', d: 'Where time and money go' },
-  { icon: '✅', t: 'Evals', d: 'Score quality before every release' },
-  { icon: '🙋', t: 'Human in the loop', d: 'Approve the risky steps' },
+  { icon: <ListTree />, t: 'Reasoning traces', d: 'What it saw, chose, and why' },
+  { icon: <Timer />, t: 'Latency & tokens', d: 'Where time and money go' },
+  { icon: <CircleCheck />, t: 'Evals', d: 'Score quality before every release' },
+  { icon: <UserCheck />, t: 'Human in the loop', d: 'Approve the risky steps' },
 ]
 
 function Bar({ s, i }) {
@@ -64,7 +65,7 @@ export default function Observability() {
           <div className="col fill" style={{ gap: 0, justifyContent: 'space-between' }}>
             {spans.map((s, i) => (
               <div key={i} style={{ display: 'grid', gridTemplateColumns: '290px 1fr 250px', alignItems: 'center', gap: 16, padding: '8px 0', borderBottom: i < spans.length - 1 ? '1px solid var(--line)' : 'none' }}>
-                <span className="mono small" style={{ color: s.root ? 'var(--ink)' : 'var(--ink-2)', paddingLeft: s.root ? 0 : 24, fontWeight: s.root ? 700 : 400, whiteSpace: 'nowrap' }}>{s.hitl ? '🙋 ' : ''}{s.n}</span>
+                <span className="mono small" style={{ color: s.root ? 'var(--ink)' : 'var(--ink-2)', paddingLeft: s.root ? 0 : 24, fontWeight: s.root ? 700 : 400, whiteSpace: 'nowrap' }}>{s.n}</span>
                 <Bar s={s} i={i} />
                 <span className="mono small" style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>{s.t}{s.k && <span className="muted"> · {s.k}</span>}</span>
               </div>

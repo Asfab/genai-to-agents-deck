@@ -1,4 +1,5 @@
 import { Slide, Reveal, Stagger, Em, CountUp } from '../../components'
+import { Lock } from 'lucide-react'
 import { Chip } from './parts/bits'
 
 export const meta = {
@@ -12,7 +13,9 @@ export const meta = {
 - **~40% less compute:** picks the right model per task — Claude, Mistral or IBM Granite
 - **Secure by design:** sensitive-data scanning, policy checks and red-teaming built in
 
-Point: *the same "agent" idea from Act 3 — applied to writing software.*
+No build steps: the Bob card appears, then the three numbers count up on entry (~2 s).
+
+Point: *the same "agent" idea from the agents section — applied to writing software.*
 
 **Ask:** "How many of you used an AI coding assistant for your last lab or project?" Then: "Did it plan, or just autocomplete?"
 
@@ -40,7 +43,7 @@ export default function Bob() {
               </div>
             ))}
           </div>
-          <div className="row" style={{ gap: 10, flexWrap: 'wrap' }}><Chip tone="accent">🔒 Secure by design</Chip></div>
+          <div className="row" style={{ gap: 10, flexWrap: 'wrap' }}><Chip tone="accent"><Lock strokeWidth={1.8} style={{ width: 22, height: 22 }} />Secure by design</Chip></div>
         </Reveal>
         <Stagger delay={0.35} as="right" className="grid" style={{ gridTemplateRows: 'repeat(3, 1fr)', flex: 1 }}>
           {stats.map((s) => (

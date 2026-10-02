@@ -1,3 +1,4 @@
+import { Plug, Wrench, FileText, MessageSquareText } from 'lucide-react'
 import { Slide, Reveal, Em, Label } from '../../components'
 import { Stage, Pos, Wires, Wire } from './parts/kit'
 
@@ -6,11 +7,11 @@ export const meta = {
   steps: 4,
   notes: `**The hidden bottleneck** in agentic systems: tool silos, the same glue code rewritten for every app, context scattered everywhere, tight coupling to one platform.
 
-- Entry, left: 3 AI apps × 4 tools = **12 custom integrations**. Add one app → 4 more
-- Click 1, right: **MCP** (Model Context Protocol, open-sourced by Anthropic, Nov 2024). Each tool is wrapped once as an *MCP server*; every app speaks MCP. 3 + 4 = **7**
+- Left (builds first): 3 AI apps × 4 tools = **12 custom integrations**. Add one app → 4 more
+- Right: **MCP** (Model Context Protocol, open-sourced by Anthropic, Nov 2024). Each tool is wrapped once as an *MCP server*; every app speaks MCP. 3 + 4 = **7**
 - Analogy: **USB-C**. One port, any device
 
-An MCP server exposes three things (clicks 2–4):
+An MCP server exposes three things (they build in last):
 
 - **Tools**: actions the model can call
 - **Resources**: data it can read
@@ -23,8 +24,8 @@ Now supported across OpenAI, Google, Microsoft, IBM (watsonx Orchestrate) and mo
 **Transition:** "MCP connects agents to tools. What connects agents to *other agents*?"`,
 }
 
-const apps = ['🤖 Claude', '💬 ChatGPT', '🧑‍💻 VS Code']
-const tools = ['🐙 GitHub', '💬 Slack', '🗄️ Postgres', '📁 Drive']
+const apps = ['Claude', 'ChatGPT', 'VS Code']
+const tools = ['GitHub', 'Slack', 'Postgres', 'Drive']
 const W = 780, H = 300
 const ay = (i) => 30 + i * 95 + 28, ty = (i) => 10 + i * 75 + 26
 
@@ -48,7 +49,7 @@ function Diagram({ mcp, at }) {
       {mcp && (
         <Pos x={300} y={95} w={180} h={110} at={at} delay={0.2} as="scale">
           <div className="card ink" style={{ width: '100%', padding: 0, alignItems: 'center', justifyContent: 'center', gap: 2 }}>
-            <span className="card-title">🔌 MCP</span>
+            <div className="row" style={{ gap: 10, alignItems: 'center' }}><span className="icon"><Plug /></span><span className="card-title">MCP</span></div>
           </div>
         </Pos>
       )}
@@ -61,9 +62,9 @@ const Chip = ({ children }) => (
 )
 
 const prims = [
-  { icon: '🛠️', t: 'Tools', d: 'Actions the model can call', ex: 'create_issue()' },
-  { icon: '📄', t: 'Resources', d: 'Data the model can read', ex: 'file://, db rows' },
-  { icon: '🧩', t: 'Prompts', d: 'Reusable templates', ex: '/summarise-pr' },
+  { icon: <Wrench />, t: 'Tools', d: 'Actions the model can call', ex: 'create_issue()' },
+  { icon: <FileText />, t: 'Resources', d: 'Data the model can read', ex: 'file://, db rows' },
+  { icon: <MessageSquareText />, t: 'Prompts', d: 'Reusable templates', ex: '/summarise-pr' },
 ]
 
 export default function MCP() {

@@ -1,3 +1,4 @@
+import { Network, Plane, Map as MapIcon, Salad, ClipboardList, UserCheck } from 'lucide-react'
 import { Slide, Reveal, Em } from '../../components'
 import { Stage, Pos, Wires, Wire, Node, Tag } from './parts/kit'
 
@@ -8,10 +9,12 @@ export const meta = {
 
 Read the prompt aloud. It's really three jobs in one sentence.
 
-- Entry: the **Travel Supervisor** gets the whole goal
-- Click 1 → it delegates to three specialists, each with its *own* tools and a short, focused prompt
-- Click 2 → results come back; the supervisor merges them into one day-by-day plan
-- Click 3 → before spending money it pauses for the parent to approve (human-in-the-loop)
+The diagram builds in this order:
+
+- The **Travel Supervisor** gets the whole goal
+- It delegates to three specialists, each with its *own* tools and a short, focused prompt
+- Results come back; the supervisor merges them into one day-by-day plan
+- Before spending money it pauses for the parent to approve (human-in-the-loop)
 
 Why better than one agent? Each specialist is small, testable and swappable. Want a hotel agent? Plug in a fourth.
 
@@ -20,11 +23,11 @@ Why better than one agent? Each specialist is small, testable and swappable. Wan
 **Transition:** "Supervisor has a boss. What if there's no boss at all?"`,
 }
 
-const W = 1728, H = 600
+const W = 1728, H = 570
 const workers = [
-  { y: 0, icon: '✈️', t: 'Flight agent', s: 'Kochi → Bangkok, 4 seats', tool: 'flight_search' },
-  { y: 210, icon: '🗺️', t: 'Itinerary agent', s: 'Kid-friendly spots, 4 days', tool: 'places_api' },
-  { y: 420, icon: '🥗', t: 'Food agent', s: 'Veg restaurants near each stop', tool: 'restaurant_search' },
+  { y: 0, icon: <Plane />, t: 'Flight agent', s: 'Kochi → Bangkok, 4 seats', tool: 'flight_search' },
+  { y: 200, icon: <MapIcon />, t: 'Itinerary agent', s: 'Kid-friendly spots, 4 days', tool: 'places_api' },
+  { y: 400, icon: <Salad />, t: 'Food agent', s: 'Veg restaurants near each stop', tool: 'restaurant_search' },
 ]
 
 export default function SupervisorExample() {
@@ -35,29 +38,29 @@ export default function SupervisorExample() {
       </Reveal>
       <Stage w={W} h={H}>
         <Wires w={W} h={H}>
-          <Wire d="M 220 -10 L 220 140" tone="ink" delay={0.3} />
-          {workers.map((w, i) => <Wire key={i} d={`M 440 300 C 540 300, 540 ${w.y + 90}, 632 ${w.y + 90}`} at={1} delay={0.1 + i * 0.12} />)}
-          {workers.map((w, i) => <Wire key={'r' + i} d={`M 1186 ${w.y + 90} L 1262 ${w.y + 90}`} at={2} delay={i * 0.12} dashed />)}
+          <Wire d="M 220 -10 L 220 125" tone="ink" delay={0.3} />
+          {workers.map((w, i) => <Wire key={i} d={`M 440 285 C 540 285, 540 ${w.y + 85}, 632 ${w.y + 85}`} at={1} delay={0.1 + i * 0.12} />)}
+          {workers.map((w, i) => <Wire key={'r' + i} d={`M 1186 ${w.y + 85} L 1262 ${w.y + 85}`} at={2} delay={i * 0.12} dashed />)}
         </Wires>
 
-        <Pos x={0} y={150} w={440} h={300} as="scale">
-          <Node variant="ink" icon="🎛️" title="Travel Supervisor" sub="Splits the goal, routes each part, merges the answers" />
+        <Pos x={0} y={135} w={440} h={300} as="scale">
+          <Node variant="ink" icon={<Network />} title="Travel Supervisor" sub="Splits the goal, routes each part, merges the answers" />
         </Pos>
-        <Pos x={20} y={480} w={420} h={80} at={3} as="up">
-          <Tag style={{ alignSelf: 'center' }}>🙋 parent approves before booking</Tag>
+        <Pos x={20} y={460} w={420} h={80} at={3} as="up">
+          <Tag style={{ alignSelf: 'center', display: 'inline-flex', alignItems: 'center', gap: 10 }}><UserCheck size={26} strokeWidth={1.8} /> parent approves before booking</Tag>
         </Pos>
 
         {workers.map((w, i) => (
-          <Pos key={w.t} x={640} y={w.y} w={540} h={180} at={1} delay={0.2 + i * 0.12} as="left">
+          <Pos key={w.t} x={640} y={w.y} w={540} h={170} at={1} delay={0.2 + i * 0.12} as="left">
             <Node variant="tint" icon={w.icon} title={w.t} sub={w.s}>
               <span className="mono small accent">tool: {w.tool}</span>
             </Node>
           </Pos>
         ))}
 
-        <Pos x={1272} y={0} w={456} h={600} at={2} delay={0.3} as="left">
+        <Pos x={1272} y={0} w={456} h={570} at={2} delay={0.3} as="left">
           <div className="card" style={{ width: '100%', gap: 16, padding: '30px 34px' }}>
-            <div className="card-title">📋 Day-by-day plan</div>
+            <div className="row" style={{ gap: 14, alignItems: 'center' }}><span className="icon"><ClipboardList /></span><div className="card-title">Day-by-day plan</div></div>
             {[
               ['Day 1', 'Fly COK → BKK · aquarium'],
               ['Day 2', 'Safari park · veg thali'],

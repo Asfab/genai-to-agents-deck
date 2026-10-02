@@ -5,11 +5,11 @@ export const meta = {
   steps: 3,
   notes: `Tools = specialised capabilities that let an agent reach external systems: search APIs, math engines, databases, your company's APIs.
 
-The LLM never sees your code, only the **definition**. So the definition *is* the prompt for tool use:
+The LLM never sees your code, only the **definition**. So the definition *is* the prompt for tool use. The three parts light up in order, each with its marker in the code:
 
-- Click 1 → **Name**: says what it does. \`search_trains\`, not \`tool_7\`
-- Click 2 → **Description**: when to use it. The model literally reads this to decide
-- Click 3 → **Typed arguments**: names, types, a description per parameter, so it fills them correctly
+- **Name**: says what it does. \`search_trains\`, not \`tool_7\`
+- **Description**: when to use it. The model literally reads this to decide
+- **Typed arguments**: names, types, a description per parameter, so it fills them correctly
 
 Tip for students: most "the agent picked the wrong tool" bugs are bad descriptions, not bad models.
 
@@ -63,7 +63,7 @@ export default function Tools() {
             </Reveal>
           ))}
           <Reveal at={0} delay={0.4} as="fade" className="row" style={{ gap: 12, flexWrap: 'wrap' }}>
-            {['🔎 Web search', '🧮 Calculator', '🗄️ SQL', '📧 Email', '🚆 Booking API'].map((t) => <Pill key={t} outline>{t}</Pill>)}
+            {['Web search', 'Calculator', 'SQL', 'Email', 'Booking API'].map((t) => <Pill key={t} outline>{t}</Pill>)}
           </Reveal>
         </div>
       </div>

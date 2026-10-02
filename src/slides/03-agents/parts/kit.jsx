@@ -1,5 +1,5 @@
 // Diagram kit for the agents section: absolutely-positioned nodes on a fixed
-// pixel stage, plus SVG wires that draw themselves in on a given click-step.
+// pixel stage, plus SVG wires that draw themselves in when their build step `at` is reached.
 import { motion } from 'framer-motion'
 import { Reveal } from '../../../components'
 import { ease } from '../../../components/motion'

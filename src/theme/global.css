@@ -154,3 +154,12 @@ body {
 .overview .cap b { font-family: var(--font-mono); color: var(--muted); margin-right: 6px; font-weight: 500; }
 
 @media (prefers-reduced-motion: reduce) { * { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+/* ── Line icons (lucide-react). Use <Icon of={Brain} /> or put a lucide icon in Card's `icon` prop ── */
+.icon svg, svg.lucide { stroke-width: 1.6; }
+.card .icon { color: var(--accent); display: flex; }
+.card .icon svg { width: 44px; height: 44px; }
+.card.ink .icon { color: #fff; }
+.icon-chip { display: inline-grid; place-items: center; width: 64px; height: 64px; border-radius: 16px; background: var(--accent-soft); color: var(--accent); flex: none; }
+.icon-chip svg { width: 34px; height: 34px; }
+.card.ink .icon-chip { background: rgba(255,255,255,.12); color: #fff; }

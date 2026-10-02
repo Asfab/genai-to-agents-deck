@@ -4,14 +4,15 @@ import { Chip } from './parts/bits'
 export const meta = {
   title: 'The enterprise agentic platform',
   steps: 5,
-  notes: `**Build this diagram top-down. One layer per click.** Headline from IBM's own architecture: open, interoperable, pluggable orchestration with central governance for agents running anywhere.
+  stepMs: 1000,
+  notes: `**The diagram builds itself top-down, one layer per second (~5 s).** Let it finish, then walk it top to bottom in the same order. It is based on IBM's own reference architecture: open, pluggable orchestration with central governance for agents running anywhere.
 
-- **Entry:** users stay where they already are — Slack, Teams, WhatsApp, voice, Salesforce, APIs
-- **Click 1 — the orchestrator:** orchestrator agents + agentic workflows + a catalog of pre-built agents and tools. Three gateways sit in front of everything
-- **Click 2 — agents anywhere (A2A):** it doesn't matter who built the agent — Salesforce Agentforce, Amazon AgentCore, Microsoft Copilot, LangGraph, Langflow. They talk over A2A
-- **Click 3 — tools anywhere (MCP):** enterprise apps, automation, collaboration tools, exposed through the MCP gateway
-- **Click 4 — models anywhere:** Granite, Claude, OpenAI, Bedrock, Azure AI — swap models without rewriting the agent
-- **Click 5 — AgentOps:** evaluate, monitor, trace across all of it. Runs as SaaS (AWS, IBM Cloud) or hybrid on Red Hat OpenShift
+- **Top — channels:** users stay where they already are — Slack, Teams, WhatsApp, voice, Salesforce, APIs. Nobody installs a new app
+- **Layer 1 — the orchestrator:** orchestrator agents + agentic workflows + a catalog of pre-built agents and tools. Three gateways sit in front of everything
+- **Layer 2 — agents anywhere (A2A):** it doesn't matter who built the agent — Salesforce Agentforce, Amazon AgentCore, Microsoft Copilot, LangGraph, Langflow. They talk over A2A (Agent-to-Agent protocol)
+- **Layer 3 — tools anywhere (MCP):** enterprise apps, automation, collaboration tools, exposed once through the MCP gateway and reused by every agent
+- **Layer 4 — models anywhere:** Granite, Claude, OpenAI, Bedrock, Azure AI — swap models without rewriting the agent
+- **Right rail — AgentOps:** evaluate, monitor, trace across all of it. Runs as SaaS (AWS, IBM Cloud) or hybrid on Red Hat OpenShift
 
 **Ask:** "Why three gateways and not one?" (Different traffic, different policies: who can call which agent, which tool, which model, and what it costs.)
 

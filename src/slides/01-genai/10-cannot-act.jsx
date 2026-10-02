@@ -1,4 +1,5 @@
-import { Slide, Reveal, Stagger, Em, Label } from '../../components'
+import { Slide, Reveal, Stagger, Em, Label, Icon } from '../../components'
+import { Brain, Hand } from 'lucide-react'
 
 export const meta = {
   title: 'What an LLM cannot do alone',
@@ -6,8 +7,8 @@ export const meta = {
   notes: `Scenario: you ask an LLM to plan a weekend trip to Munnar with 4 friends.
 
 - **It can think & write** — suggest places, draft a day plan, estimate a budget, write the group message. Great.
-- (click) **But on its own it cannot act** — it can't check this weekend's weather, see which buses have seats, book the homestay, or send the message. It has no hands, no live data.
-- (click) The bridge: give the LLM **tools**, **memory** and a **loop** to plan → act → check. That's an **AI agent** — Act 3.
+- **But on its own it cannot act** — it can't check this weekend's weather, see which buses have seats, book the homestay, or send the message. It has no hands, no live data.
+- The bridge (dark card): give the LLM **tools**, **memory** and a **loop** to plan → act → check. That's an **AI agent** — Act 3.
 
 **Ask:** "What's one task you'd love AI to actually *do* for you, end-to-end?" (Remember answers — reuse them in Act 3.)
 
@@ -20,7 +21,7 @@ const cannot = ["Check this weekend's weather", 'See which buses still have seat
 const Col = ({ variant, icon, head, sub, items, mark }) => (
   <div className={`card ${variant}`} style={{ flex: 1, gap: 26, padding: '40px 48px' }}>
     <div className="row" style={{ alignItems: 'center', gap: 22 }}>
-      <span style={{ fontSize: 56, lineHeight: 1 }}>{icon}</span>
+      <Icon of={icon} chip style={{ background: 'var(--surface)' }} />
       <div className="col" style={{ gap: 6 }}>
         <Label>{sub}</Label>
         <div className="h2">{head}</div>
@@ -42,10 +43,10 @@ export default function CannotAct() {
       lede="Ask it to plan your weekend trip to Munnar with 4 friends…">
       <div className="grid" style={{ gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr auto' }}>
         <Reveal at={0} style={{ display: 'flex' }}>
-          <Col variant="tint" icon="🧠" sub="It can" head="Think & write" items={can} mark="✓" />
+          <Col variant="tint" icon={Brain} sub="It can" head="Think & write" items={can} mark="✓" />
         </Reveal>
         <Reveal at={1} style={{ display: 'flex' }}>
-          <Col variant="flat" icon="✋" sub="On its own, it cannot" head="Act in the real world" items={cannot} mark="✗" />
+          <Col variant="flat" icon={Hand} sub="On its own, it cannot" head="Act in the real world" items={cannot} mark="✗" />
         </Reveal>
         <Reveal at={2} as="scale" style={{ gridColumn: '1 / -1' }}>
           <div className="card ink" style={{ padding: '26px 44px', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>

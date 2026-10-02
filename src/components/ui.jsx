@@ -105,3 +105,14 @@ export const Media = ({ src, alt, fit = 'cover', style }) => (
 )
 
 export { Reveal, Stagger }
+
+/**
+ * Line icon from lucide-react, sized & coloured by the theme.
+ *   import { Brain } from 'lucide-react';  <Icon of={Brain} />        → plain accent icon
+ *   <Icon of={Brain} chip />                                          → icon in a soft rounded tile
+ * Browse names at https://lucide.dev/icons
+ */
+export const Icon = ({ of: Of, chip, size, style }) => {
+  const svg = <Of size={size} strokeWidth={1.6} />
+  return chip ? <span className="icon-chip" style={style}>{svg}</span> : <span className="icon" style={{ color: 'var(--accent)', display: 'inline-flex', ...style }}>{svg}</span>
+}

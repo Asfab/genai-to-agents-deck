@@ -7,7 +7,7 @@ export const meta = {
 
 - "IRCTC" and "tatkal" are rare in training data → split into several tokens
 - The split here is illustrative; every model has its own tokenizer
-- (click) Rules of thumb for English: ~4 characters per token, ~100 tokens ≈ 75 words
+- Then the three cards build in: rules of thumb for English: ~4 characters per token, ~100 tokens ≈ 75 words
 - Indian languages (Hindi, Malayalam…) usually need *more* tokens for the same sentence → slower and costlier
 - **Context window** = how many tokens the model can look at in one go. Your chat history, files, instructions all share it.
 

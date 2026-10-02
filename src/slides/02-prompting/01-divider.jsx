@@ -24,7 +24,7 @@ const topics = [
 
 export default function Divider() {
   return (
-    <SectionDivider section="prompting" num={2} time="~15 min" topics={topics}
+    <SectionDivider section="prompting" num={2} topics={topics}
       title={<>Prompt <Em>Engineering</Em></>}
       lede={'Same model. Better words. Wildly better results.'} />
   )

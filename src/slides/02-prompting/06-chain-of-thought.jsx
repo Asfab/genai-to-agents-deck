@@ -3,10 +3,12 @@ import { Slide, Reveal, Grid, Em, Label } from '../../components'
 export const meta = {
   title: 'Chain of thought',
   steps: 2,
-  notes: `Read the question out. Let the room answer first (most get it in their head).
+  firstMs: 1800, // a beat to read the question before the answers arrive
+  stepMs: 1300,
+  notes: `The train question appears first; the direct answer (grey, left) follows after a couple of seconds, then the step-by-step answer (purple, right) writes its three lines one by one. Read the question out — if you want the room to try it themselves, ask *before* moving to this slide, or just ask "who spots the mistake on the left?"
 
-- **(click 1) Direct answer:** the model jumps to a number — and forgets the delay. Confident, wrong
-- **(click 2) "Think step by step":** each line it writes becomes context for the next token. It literally reasons on paper
+- **Direct answer (left):** the model jumps to a number — and forgets the 25-minute delay. Confident, wrong (4:15 PM)
+- **"Think step by step" (right):** each line it writes becomes context for the next token. It literally reasons on paper and lands on 4:40 PM
 - Connect to Act 1: an LLM only "thinks" while it generates text — so give it room to write the steps
 
 Note: newer "reasoning" models (o-series, Claude/Gemini thinking modes, Granite reasoning) do this internally — but asking for steps still helps you **check** the logic.
@@ -33,9 +35,9 @@ export default function ChainOfThought() {
         <Reveal at={2} className="card tint" style={{ justifyContent: 'center', gap: 36 }}>
           <Label>+ “Think step by step”</Label>
           <ol className="col mono" style={{ gap: 18, listStyle: 'none', fontSize: 'var(--fs-h3)' }}>
-            <li>1 · 6:40 AM + 9 h → <b>3:40 PM</b></li>
-            <li>2 · 3:40 PM + 35 min → <b>4:15 PM</b></li>
-            <li>3 · 4:15 PM + 25 min delay → <b className="accent">4:40 PM ✓</b></li>
+            <Reveal tag="li" as="left" at={2} delay={0.35}>1 · 6:40 AM + 9 h → <b>3:40 PM</b></Reveal>
+            <Reveal tag="li" as="left" at={2} delay={0.75}>2 · 3:40 PM + 35 min → <b>4:15 PM</b></Reveal>
+            <Reveal tag="li" as="left" at={2} delay={1.15}>3 · 4:15 PM + 25 min delay → <b className="accent">4:40 PM ✓</b></Reveal>
           </ol>
           <div className="body">Each written step becomes context for the next token.</div>
         </Reveal>

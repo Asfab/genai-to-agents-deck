@@ -15,15 +15,15 @@ export const meta = {
 
 const topics = [
   'AI → ML → DL → GenAI',
-  'Next-token prediction',
-  'Tokens, training & attention',
+  'Next-token prediction & how it learns',
+  'From RNNs to Transformers & attention',
   'Limits: hallucination, no actions',
   'Use cases & RAG',
 ]
 
 export default function Divider() {
   return (
-    <SectionDivider section="genai" num={1} time="~30 min" topics={topics}
+    <SectionDivider section="genai" num={1} topics={topics}
       title={<>Generative AI &amp; how <Em>LLMs</Em> work</>}
       lede={'What\'s actually happening when ChatGPT "writes", and where that\'s genuinely useful for you.'} />
   )

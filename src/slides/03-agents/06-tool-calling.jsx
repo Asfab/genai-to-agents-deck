@@ -1,15 +1,16 @@
+import { PenLine, Link2, Braces, Play, MessageSquareText } from 'lucide-react'
 import { Slide, Reveal, Em } from '../../components'
 
 export const meta = {
   title: 'Tool-calling LLMs',
   steps: 4,
-  notes: `Tool calling = an LLM capability to interface with external tools or data. Five steps, one per click:
+  notes: `Tool calling = an LLM capability to interface with external tools or data. Five steps build left to right:
 
 - **Define** the function (last slide)
-- Click 1 → **Bind**: hand the tool schemas to the model with the prompt
-- Click 2 → **Model selects**: it replies with *structured JSON*: tool name + arguments. It does NOT run anything
-- Click 3 → **Execute**: *your* code runs the function, gets real data
-- Click 4 → **Final response**: result goes back; model writes the answer in plain language
+- **Bind**: hand the tool schemas to the model with the prompt
+- **Model selects**: it replies with *structured JSON*: tool name + arguments. It does NOT run anything
+- **Execute**: *your* code runs the function, gets real data
+- **Final response**: result goes back; model writes the answer in plain language
 
 **Key line:** "The LLM never runs the tool. It only asks." That's what makes it safe to put checks in between.
 
@@ -19,11 +20,11 @@ Full worked example: IBM's Granite function-calling tutorial (ibm.com/think/tuto
 }
 
 const steps = [
-  { n: '01', icon: '✍️', t: 'Define', d: 'Write the function + schema', lbl: '# python', code: '@tool\ndef search_trains(\n  origin, dest,\n  date, after)' },
-  { n: '02', icon: '🔗', t: 'Bind', d: 'Send tool schemas with the prompt', lbl: '# python', code: 'llm.bind_tools(\n  [search_trains])' },
-  { n: '03', icon: '🎯', t: 'Model selects', d: 'Replies with JSON, not prose', lbl: '# LLM output', code: '{"name":\n  "search_trains",\n "args": {\n  "origin": "ERS",\n  "dest": "SBC",\n  "after": "17:00"}}', cls: 'k' },
-  { n: '04', icon: '⚙️', t: 'Execute', d: 'Your code runs it for real', lbl: '# tool result', code: '3 trains found\n18:15  SL  ₹485\n19:40  SL  ₹520\n21:05  3A  ₹1310', cls: 's' },
-  { n: '05', icon: '💬', t: 'Final response', d: 'Result goes back; LLM answers', lbl: '# LLM output', code: '"Cheapest: the\n6:15 pm sleeper,\n₹485. Book it?"', ink: true },
+  { n: '01', icon: <PenLine />, t: 'Define', d: 'Write the function + schema', lbl: '# python', code: '@tool\ndef search_trains(\n  origin, dest,\n  date, after)' },
+  { n: '02', icon: <Link2 />, t: 'Bind', d: 'Send tool schemas with the prompt', lbl: '# python', code: 'llm.bind_tools(\n  [search_trains])' },
+  { n: '03', icon: <Braces />, t: 'Model selects', d: 'Replies with JSON, not prose', lbl: '# LLM output', code: '{"name":\n  "search_trains",\n "args": {\n  "origin": "ERS",\n  "dest": "SBC",\n  "after": "17:00"}}', cls: 'k' },
+  { n: '04', icon: <Play />, t: 'Execute', d: 'Your code runs it for real', lbl: '# tool result', code: '3 trains found\n18:15  SL  ₹485\n19:40  SL  ₹520\n21:05  3A  ₹1310', cls: 's' },
+  { n: '05', icon: <MessageSquareText />, t: 'Final response', d: 'Result goes back; LLM answers', lbl: '# LLM output', code: '"Cheapest: the\n6:15 pm sleeper,\n₹485. Book it?"', ink: true },
 ]
 
 export default function ToolCalling() {

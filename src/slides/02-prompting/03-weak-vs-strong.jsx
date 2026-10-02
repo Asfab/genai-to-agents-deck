@@ -3,10 +3,10 @@ import { Slide, Reveal, Grid, Em, Label, Typewriter } from '../../components'
 export const meta = {
   title: 'Weak vs strong prompt',
   steps: 1,
-  notes: `Same model, two prompts. Ideally run both live.
+  notes: `Same model, two prompts. The weak prompt (left, red) shows first; after a second the strong prompt (right, green) types itself out and its result appears underneath. If you have a laptop handy, running both live in any chatbot is even better.
 
-- **Left:** "Write code for login" — which language? framework? database? security? The model has to guess, so it guesses the most *average* answer
-- **(click) Right:** language, framework, auth method, output format, error handling — every guess removed
+- **Left — weak:** "Write code for login". Which language? Framework? Database? Security? The model has to guess, so it guesses the most *average* answer
+- **Right — strong:** language, framework, auth method, output format, error handling — every guess removed. The green pills at the bottom are the things you now get that you didn't before
 
 **Ask:** "What exactly changed between the two?" Let them call out: language, framework, format, constraints.
 

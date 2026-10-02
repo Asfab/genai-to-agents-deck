@@ -31,23 +31,36 @@ export default function Deck() {
   const { index, step } = pos
   const slide = slides[index]
 
-  // ── navigation ──
+  // ── navigation: one press = one slide. A slide's steps play by themselves (auto-build). ──
   const go = useCallback((delta) => {
     setPos(({ index, step }) => {
-      const s = slides[index]
-      if (delta > 0) {
-        if (step < s.steps) return { index, step: step + 1 }
-        if (index < total - 1) { setDir(1); return { index: index + 1, step: 0 } }
-      } else {
-        if (step > 0) return { index, step: step - 1 }
-        if (index > 0) { setDir(-1); return { index: index - 1, step: slides[index - 1].steps } }
-      }
+      if (delta > 0 && index < total - 1) { setDir(1); return { index: index + 1, step: 0 } }
+      if (delta < 0 && index > 0) { setDir(-1); return { index: index - 1, step: slides[index - 1].steps } }
       return { index, step }
     })
   }, [])
   const goTo = useCallback((i, s = 0) => {
     setPos(({ index }) => { setDir(i >= index ? 1 : -1); return { index: Math.min(Math.max(i, 0), total - 1), step: s } })
   }, [])
+
+  // ── auto-build: after the entry cascade, reveal step 1, 2, … on a timer.
+  //    meta.loop → after the last step, hold, then replay from meta.loopFrom (default 0). ──
+  useEffect(() => {
+    if (SHOT || !slide.steps) return
+    let t
+    const tick = (delay) => {
+      t = setTimeout(() => {
+        setPos((p) => {
+          if (p.index !== index) return p
+          if (p.step < slide.steps) { tick(slide.stepMs); return { index, step: p.step + 1 } }
+          if (slide.loop) { tick(slide.stepMs); return { index, step: slide.loopFrom } }
+          return p
+        })
+      }, delay)
+    }
+    tick(pos.step === 0 ? slide.firstMs : slide.stepMs)
+    return () => clearTimeout(t)
+  }, [index])
 
   useEffect(() => { history.replaceState(null, '', `#/${index + 1}${step ? '.' + step : ''}`) }, [index, step])
 
@@ -110,7 +123,7 @@ export default function Deck() {
   const remoteUrl = useMemo(() => `${location.origin}${location.pathname}?remote=${room}`, [room])
   useEffect(() => { QRCode.toDataURL(remoteUrl, { margin: 1, width: 520, color: { dark: '#111114', light: '#ffffff' } }).then(setQr) }, [remoteUrl])
 
-  const ctx = { step, active: true, number: index + 1, total, static: false }
+  const ctx = { step, steps: slide.steps, active: true, number: index + 1, total, static: false }
 
   return (
     <>
@@ -181,7 +194,7 @@ function Overview({ current, onPick }) {
         <button key={s.id} className={i === current ? 'cur' : ''} onClick={() => onPick(i)}>
           <div className="thumb">
             <div className="canvas" style={{ transform: `scale(${w / 1920})` }}>
-              <SlideContext.Provider value={{ step: 99, active: false, number: i + 1, total, static: true }}>
+              <SlideContext.Provider value={{ step: 99, steps: s.steps, active: false, number: i + 1, total, static: true }}>
                 <s.Component />
               </SlideContext.Provider>
             </div>

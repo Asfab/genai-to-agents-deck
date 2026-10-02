@@ -3,8 +3,12 @@ import { AnatomyList, AnatomyPrompt } from './parts/Anatomy'
 
 export const meta = {
   title: 'Anatomy of a prompt',
-  steps: 5,
-  notes: `Build the prompt one part per click. Read each highlighted line aloud.
+  // 6 parts: steps 0–5 build the prompt, 6 = full prompt, 7–12 cycle the highlight, 13 = hold → loop to 6
+  steps: 13,
+  loop: true,
+  loopFrom: 6,
+  stepMs: 1500,
+  notes: `This slide animates on its own: the prompt on the right builds one part at a time (about 1.5 s each) while the matching label on the left lights up. Once all six are in, the highlight keeps cycling through them — so you can talk at your own pace and point at whichever part is lit. Read a highlighted line aloud as an example.
 
 - **Role** — who should answer? A mentor explains differently from a recruiter
 - **Task** — the verb. Review, rewrite, compare, debug
@@ -20,6 +24,7 @@ You don't need all six every time. Short question → task + context is often en
 **Transition:** "That last one — examples — is powerful enough to deserve its own slide."`,
 }
 
+// Order matters: AnatomyList / AnatomyPrompt light part i at build step i.
 const parts = [
   { key: 'role', name: 'Role', hint: 'Who should answer?', text: 'You are a placement mentor at an engineering college.' },
   { key: 'task', name: 'Task', hint: 'What exactly to do', text: 'Review my resume summary and rewrite it.' },

@@ -1,4 +1,5 @@
 import { Slide, Stagger, Em } from '../../components'
+import { Code2, GraduationCap, PenLine, FileSearch, BarChart3, Palette, Languages, Headset } from 'lucide-react'
 import IconCard from './parts/IconCard'
 
 export const meta = {
@@ -21,14 +22,14 @@ export const meta = {
 }
 
 const uses = [
-  { icon: '💻', title: 'Code', text: 'Explain a repo, write unit tests, find the bug in your DSA solution.' },
-  { icon: '🎓', title: 'Learning', text: '"Explain backprop like I\'m in 2nd year — then quiz me."' },
-  { icon: '✍️', title: 'Writing', text: 'First drafts of SOPs, emails, project reports. You edit.' },
-  { icon: '🔎', title: 'Search your docs', text: 'Chat with your notes or a 300-page PDF manual (RAG).' },
-  { icon: '📊', title: 'Data', text: 'Turn a messy CSV of fest registrations into charts & insights.' },
-  { icon: '🎨', title: 'Images & design', text: 'Posters for the tech fest, quick UI mock-ups for your app.' },
-  { icon: '🗣️', title: 'Voice & language', text: 'Transcribe lectures, translate between Indian languages.' },
-  { icon: '🎧', title: 'Customer support', text: 'Bots that answer from a company\'s own help docs, 24×7.' },
+  { icon: Code2, title: 'Code', text: 'Explain a repo, write unit tests, find the bug in your DSA solution.' },
+  { icon: GraduationCap, title: 'Learning', text: '"Explain backprop like I\'m in 2nd year — then quiz me."' },
+  { icon: PenLine, title: 'Writing', text: 'First drafts of SOPs, emails, project reports. You edit.' },
+  { icon: FileSearch, title: 'Search your docs', text: 'Chat with your notes or a 300-page PDF manual (RAG).' },
+  { icon: BarChart3, title: 'Data', text: 'Turn a messy CSV of fest registrations into charts & insights.' },
+  { icon: Palette, title: 'Images & design', text: 'Posters for the tech fest, quick UI mock-ups for your app.' },
+  { icon: Languages, title: 'Voice & language', text: 'Transcribe lectures, translate between Indian languages.' },
+  { icon: Headset, title: 'Customer support', text: 'Bots that answer from a company\'s own help docs, 24×7.' },
 ]
 
 export default function UseCases() {

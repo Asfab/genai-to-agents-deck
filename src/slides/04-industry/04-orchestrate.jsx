@@ -1,4 +1,5 @@
 import { Slide, Reveal, Stagger, Em } from '../../components'
+import { Hammer, Plug, Network, ShieldCheck } from 'lucide-react'
 import { BigCard, Chip } from './parts/bits'
 
 export const meta = {
@@ -11,7 +12,7 @@ export const meta = {
 - **Orchestrate:** a supervisor agent routes work to specialist agents; agentic workflows for multi-step processes with branching and approvals
 - **Govern:** the control plane — versions, access control, audit logs, rollback, analytics
 
-This is what I work on day to day. Keep it personal: "My team ships this."
+The four cards and the black banner cascade in on entry (~1.5 s); no build steps. If the IBM presenter is on stage, hand over for one personal line here ("this is what my team ships").
 
 **Ask:** "If you had to give an agent a tool *without writing code*, which of these three would you pick?" (MCP URL — it's literally a link.)
 
@@ -19,10 +20,10 @@ This is what I work on day to day. Keep it personal: "My team ships this."
 }
 
 const pillars = [
-  { num: '01', icon: '🛠️', title: 'Build', text: 'No-code in the browser, or agent-as-code with the ADK.', chips: ['No-code', 'ADK + CLI'] },
-  { num: '02', icon: '🔌', title: 'Connect', text: 'Give agents tools, or pick from a pre-built catalog.', chips: ['OpenAPI', 'MCP', 'Python'] },
-  { num: '03', icon: '🧭', title: 'Orchestrate', text: 'A supervisor routes work to specialist agents and workflows.', chips: ['Multi-agent', 'Workflows'] },
-  { num: '04', icon: '🛡️', title: 'Govern', text: 'One control plane for every agent, wherever it was built.', chips: ['Audit', 'Rollback', 'Analytics'] },
+  { num: '01', icon: Hammer, title: 'Build', text: 'No-code in the browser, or agent-as-code with the ADK.', chips: ['No-code', 'ADK + CLI'] },
+  { num: '02', icon: Plug, title: 'Connect', text: 'Give agents tools, or pick from a pre-built catalog.', chips: ['OpenAPI', 'MCP', 'Python'] },
+  { num: '03', icon: Network, title: 'Orchestrate', text: 'A supervisor routes work to specialist agents and workflows.', chips: ['Multi-agent', 'Workflows'] },
+  { num: '04', icon: ShieldCheck, title: 'Govern', text: 'One control plane for every agent, wherever it was built.', chips: ['Audit', 'Rollback', 'Analytics'] },
 ]
 
 export default function Orchestrate() {

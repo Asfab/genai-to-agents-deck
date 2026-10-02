@@ -3,14 +3,14 @@ import { Slide, Reveal, Bullets, Em, Grid } from '../../components'
 export const meta = {
   title: 'Prompting: takeaways',
   steps: 1,
-  notes: `Four lines to remember — then the bridge to Act 3.
+  notes: `Four lines to remember — then the bridge to Act 3. The four bullets slide in on the left; about a second later the black "Up next" card appears on the right.
 
 - Specific beats clever: role, task, context, format, constraints
 - Examples fix format; steps fix reasoning
 - JSON turns answers into data your code can use
 - Iterate, and verify what comes back
 
-**(click)** The bridge: everything so far is the model *talking*. Remember the JSON slide — what if the model's output wasn't an answer, but a decision: "call the booking API with these arguments"? That's an agent.
+**The black card is the bridge:** everything so far is the model *talking*. Remember the JSON slide — what if the model's output wasn't an answer, but a decision: "call the booking API with these arguments"? That's an agent.
 
 **Transition:** "Prompts tell a model what to say. Agents let it decide what to *do*. Let's see how."`,
 }

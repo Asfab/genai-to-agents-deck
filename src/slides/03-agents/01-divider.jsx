@@ -24,7 +24,7 @@ const topics = [
 
 export default function Divider() {
   return (
-    <SectionDivider section="agents" num={3} time="~25 min" topics={topics}
+    <SectionDivider section="agents" num={3} topics={topics}
       title={<>AI <Em>Agents</Em></>}
       lede={'When LLMs stop answering and start doing: reasoning, tools, memory, and teams of agents.'} />
   )

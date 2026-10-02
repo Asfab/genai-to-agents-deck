@@ -79,7 +79,7 @@ export function Debate({ at = 0 }) {
       <Wire d={seg(b, j, R, 24)} at={at} delay={0.5} tone="ink" width={2.5} />
       <Dot p={a} label="A" />
       <Dot p={b} label="B" />
-      <Dot p={j} r={24} hub label="⚖" />
+      <Dot p={j} r={24} hub label="J" />
     </Frame>
   )
 }

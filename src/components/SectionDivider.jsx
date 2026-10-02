@@ -1,23 +1,24 @@
 import { Fragment } from 'react'
 import Slide from './Slide'
 import { Reveal } from './Reveal'
+import { presentersFor } from '../presenters'
 
 const ACTS = ['Generative AI', 'Prompting', 'AI Agents', 'Industry']
 
 /**
  * Opening slide of each act. Same layout for all four so the deck reads as one system.
  *   num    – 1..4
- *   time   – e.g. '~30 min'
  *   title  – hero headline (JSX allowed, use <Em>)
  *   lede   – one-line promise
  *   topics – what this act covers (shown as a numbered route)
  */
-export default function SectionDivider({ section, num, time, title, lede, topics = [] }) {
+export default function SectionDivider({ section, num, title, lede, topics = [] }) {
+  const who = presentersFor(num)
   return (
     <Slide section={section} footer={false}>
       <div className="row fill" style={{ gap: 96 }}>
         <div className="col" style={{ flex: 1.3, justifyContent: 'space-between' }}>
-          <Reveal as="fade" className="kicker">Act 0{num} · {time}</Reveal>
+          <Reveal as="fade" className="kicker">Act 0{num}{who.length ? ` · ${who.map((p) => p.name).join(' & ')}` : ''}</Reveal>
           <div className="col" style={{ gap: 36 }}>
             <Reveal delay={0.1}><h1 className="hero">{title}</h1></Reveal>
             <Reveal delay={0.25}><p className="lede">{lede}</p></Reveal>

@@ -1,9 +1,10 @@
-import { Slide, Stagger, Em } from '../../components'
+import { BookOpen, Bug, Mic, FileText } from 'lucide-react'
+import { Slide, Stagger, Em, Icon } from '../../components'
 
 export const meta = {
   title: 'Prompts for students',
   steps: 0,
-  notes: `Tell them to take a photo of this slide.
+  notes: `Tell them to take a photo of this slide — all four prompts appear together on entry. The [square brackets] are the blanks they fill in.
 
 - **Study:** the "quiz me one at a time" bit turns passive reading into active recall
 - **Debug:** always paste the *exact* error. "Root cause first" stops it from rewriting your whole file
@@ -18,10 +19,10 @@ Notice every one has role/task/context/format/constraints — the anatomy slide 
 }
 
 const tips = [
-  { icon: '📚', title: 'Study a topic', p: 'Explain [topic] like I’m a 2nd-year CSE student. Use one real-life analogy, then quiz me with 3 questions — one at a time.' },
-  { icon: '🐞', title: 'Debug your code', p: 'Here’s my [language] code and the exact error. Explain the root cause first, then the smallest fix. Don’t rewrite everything.' },
-  { icon: '🎤', title: 'Interview prep', p: 'Act as an interviewer for an SDE intern role. Ask one DSA question, wait for my answer, then give honest feedback.' },
-  { icon: '📄', title: 'Resume bullets', p: 'Rewrite these 3 bullets with strong verbs and numbers. Don’t invent anything — ask me if a metric is missing.' },
+  { icon: BookOpen, title: 'Study a topic', p: 'Explain [topic] like I’m a 2nd-year CSE student. Use one real-life analogy, then quiz me with 3 questions — one at a time.' },
+  { icon: Bug, title: 'Debug your code', p: 'Here’s my [language] code and the exact error. Explain the root cause first, then the smallest fix. Don’t rewrite everything.' },
+  { icon: Mic, title: 'Interview prep', p: 'Act as an interviewer for an SDE intern role. Ask one DSA question, wait for my answer, then give honest feedback.' },
+  { icon: FileText, title: 'Resume bullets', p: 'Rewrite these 3 bullets with strong verbs and numbers. Don’t invent anything — ask me if a metric is missing.' },
 ]
 
 export default function StudentCheatsheet() {
@@ -31,7 +32,7 @@ export default function StudentCheatsheet() {
         {tips.map((t) => (
           <div key={t.title} className="card" style={{ flex: 1, gap: 18 }}>
             <div className="row" style={{ alignItems: 'center', gap: 16 }}>
-              <div className="icon">{t.icon}</div>
+              <Icon of={t.icon} chip />
               <div className="card-title">{t.title}</div>
             </div>
             <div className="prompt-box good fill" style={{ display: 'flex', alignItems: 'center' }}>{t.p}</div>

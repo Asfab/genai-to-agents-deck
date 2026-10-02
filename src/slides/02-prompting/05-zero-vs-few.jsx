@@ -3,11 +3,12 @@ import { Slide, Reveal, Em, Label, Typewriter, Pill } from '../../components'
 export const meta = {
   title: 'Zero-shot vs few-shot',
   steps: 2,
-  notes: `Same task, same review — the only difference is two examples.
+  stepMs: 1900, // let the few-shot prompt finish typing before its reply lands
+  notes: `Same task, same Zomato review — the only difference is two examples. Builds left to right: zero-shot prompt and its reply first, then the few-shot prompt types itself out, then its one-line reply appears.
 
 - **Zero-shot (left):** just ask. You get a polite paragraph — fine for a human, useless if your code needs a label
-- **(click 1) Few-shot (right):** show 2 examples of input → output first
-- **(click 2)** The model copies the *pattern*: labels, format, even the arrow. One line, perfectly parseable
+- **Few-shot (right):** show 2 examples of input → output first, then the real review
+- **Few-shot reply (bottom right):** the model copies the *pattern* — labels, format, even the arrow. One line, perfectly parseable
 
 Rule of thumb: simple common task → zero-shot. Need a specific pattern or format → few-shot.
 
@@ -38,7 +39,7 @@ export default function ZeroVsFew() {
         </Reveal>
         <Reveal at={1} className="col" style={{ gap: 18 }}>
           <div className="row" style={{ alignItems: 'center', gap: 16 }}><Label>Few-shot</Label><Pill>2 examples first</Pill></div>
-          <Typewriter at={1} speed={70} text={few} className="prompt-box good" style={{ minHeight: 360 }} />
+          <Typewriter at={1} speed={110} text={few} className="prompt-box good" style={{ minHeight: 360 }} />
         </Reveal>
         <Reveal delay={0.4} className="card flat" style={{ justifyContent: 'center' }}>
           <Label>Model reply</Label>

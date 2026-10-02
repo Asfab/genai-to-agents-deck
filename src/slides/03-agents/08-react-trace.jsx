@@ -1,16 +1,19 @@
 import { Slide, Reveal, Em, Label } from '../../components'
+import { useSlide } from '../../engine/SlideContext'
 
 export const meta = {
   title: 'ReAct: a worked trace',
-  steps: 4,
+  steps: 12,
+  loop: true,
+  loopFrom: 4,
   notes: `**ReAct = Reason + Act** (Yao et al., 2022). The model alternates a *Thought* (reasoning in words), an *Action* (tool call) and reads an *Observation* (tool result). This is the agent loop, written down.
 
-Walk the trace, one click per beat:
+The trace writes itself in four beats (~4 s), then a highlight replays it line by line, on a loop. Walk it:
 
-- Click 1 → Thought + Action: it plans, then calls search_trains
-- Click 2 → Observation: real data comes back, 3 trains
-- Click 3 → It reasons again and checks seats. It didn't guess
-- Click 4 → It notices booking spends money → **asks the human first**. That's good agent design
+- Thought + Action: it plans, then calls search_trains
+- Observation: real data comes back, 3 trains
+- It reasons again and checks seats. It didn't guess
+- It notices booking spends money → **asks the human first**. That's good agent design
 
 **Ask:** "Which line would you log for debugging when this goes wrong?" (All of them. That's the trace. Remember this for observability.)
 
@@ -36,6 +39,8 @@ const trace = [
 ]
 
 export default function ReActTrace() {
+  const { step } = useSlide()
+  const cur = step >= 5 ? step - 5 : -1 // replay cursor after the build
   return (
     <Slide section="agents" kicker="Planning · the ReAct pattern" title={<>Think, act, <Em>observe</Em>, repeat</>}>
       <div className="row fill" style={{ gap: 48, alignItems: 'stretch' }}>
@@ -58,7 +63,8 @@ export default function ReActTrace() {
         <div className="col fill" style={{ gap: 12, justifyContent: 'center' }}>
           {trace.map((r, i) => (
             <Reveal key={i} at={r.at} delay={(i % 3) * 0.12} as="left" className="row"
-              style={{ gap: 20, alignItems: 'center', padding: '12px 0', borderBottom: i < trace.length - 1 ? '1px solid var(--line)' : 'none' }}>
+              style={{ gap: 20, alignItems: 'center', padding: '12px 16px', margin: '0 -16px', borderRadius: 'var(--radius-sm)', transition: 'background .3s',
+                background: cur === i ? 'var(--accent-soft)' : 'transparent', borderBottom: i < trace.length - 1 ? '1px solid var(--line)' : '1px solid transparent' }}>
               <Badge k={r.k} />
               <span className={r.mono ? 'mono small' : 'body'} style={{ color: 'var(--ink)', fontWeight: r.k === 'answer' ? 600 : undefined }}>{r.t}</span>
             </Reveal>

@@ -1,3 +1,4 @@
+import { BedDouble, Salad, House, Luggage } from 'lucide-react'
 import { Slide, Reveal, Em, Label } from '../../components'
 import { Heads } from './parts/kit'
 
@@ -6,10 +7,10 @@ export const meta = {
   steps: 3,
   notes: `Two kinds of memory. Analogy: **RAM vs hard disk**.
 
-- **Short-term** (entry) = the context window: system prompt, chat so far, tool results, the agent's own thoughts. Fast, but limited (token budget) and gone when the session ends
-- Click 1 → **Long-term** = a vector store or database: your preferences, past trips, company documents. Survives across sessions
-- Click 2 → **Retrieve**: before reasoning, search long-term memory *by meaning* (embeddings) and paste only the relevant bits into the context. That's RAG
-- Click 3 → **Save**: after the task, write new facts back ("user prefers sleeper class")
+- **Short-term** (builds first) = the context window: system prompt, chat so far, tool results, the agent's own thoughts. Fast, but limited (token budget) and gone when the session ends
+- **Long-term** = a vector store or database: your preferences, past trips, company documents. Survives across sessions
+- **Retrieve**: before reasoning, search long-term memory *by meaning* (embeddings) and paste only the relevant bits into the context. That's RAG
+- **Save**: after the task, write new facts back ("user prefers sleeper class")
 
 **Ask:** "Why not just put everything in the context window?" (Cost, latency, and models get worse at finding things in very long contexts.)
 
@@ -22,7 +23,7 @@ const msgs = [
   ['tool', '3 trains · 18:15 SL ₹485 …'],
   ['thought', 'Check seats before booking'],
 ]
-const facts = ['🛏️ Prefers sleeper class', '🥗 Vegetarian meals', '🏠 Home station: Ernakulam', '🧳 Munnar trip, May 2026']
+const facts = [[BedDouble, 'Prefers sleeper class'], [Salad, 'Vegetarian meals'], [House, 'Home station: Ernakulam'], [Luggage, 'Munnar trip, May 2026']]
 
 const Chip = ({ who, text, hl }) => (
   <div className="row" style={{ gap: 16, alignItems: 'center', background: 'var(--surface)', border: hl ? '2px dashed var(--accent)' : '1px solid var(--line)', borderRadius: 'var(--radius-sm)', padding: '14px 20px' }}>
@@ -78,7 +79,11 @@ export default function Memory() {
                 <ellipse cx="80" cy="30" rx="70" ry="22" style={{ fill: 'var(--surface)', stroke: 'var(--accent)', strokeWidth: 3 }} />
                 <path d="M10 80 a70 22 0 0 0 140 0 M10 125 a70 22 0 0 0 140 0" style={{ fill: 'none', stroke: 'var(--accent-line)', strokeWidth: 3 }} />
               </svg>
-              <div className="col" style={{ gap: 18, flex: 1 }}>{facts.map((f) => <div key={f} className="body" style={{ color: 'var(--ink)' }}>{f}</div>)}</div>
+              <div className="col" style={{ gap: 18, flex: 1 }}>{facts.map(([I, f]) => (
+                <div key={f} className="row body" style={{ color: 'var(--ink)', gap: 16, alignItems: 'center' }}>
+                  <I size={36} strokeWidth={1.6} style={{ color: 'var(--accent)', flex: 'none' }} />{f}
+                </div>
+              ))}</div>
             </div>
             <span className="small" style={{ marginTop: 'auto' }}>Survives sessions · searched by meaning (embeddings)</span>
           </div>

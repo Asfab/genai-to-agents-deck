@@ -6,7 +6,7 @@ export const meta = {
   notes: `Two camps — don't rank them, they leapfrog every few months.
 
 - **Closed models** — you use them through an app or a paid API; the weights stay with the company. GPT (OpenAI), Claude (Anthropic), Gemini (Google).
-- (click) **Open-weight models** — you can download and run them yourself, fine-tune them, keep data in-house. Llama (Meta), **Granite (IBM** — built for enterprise, Apache 2.0 licence), Mistral, DeepSeek, Qwen, and Indian-language efforts like Sarvam.
+- **Open-weight models** (build in on the right) — you can download and run them yourself, fine-tune them, keep data in-house. Llama (Meta), **Granite (IBM** — built for enterprise, Apache 2.0 licence), Mistral, DeepSeek, Qwen, and Indian-language efforts like Sarvam.
 - Companies pick by task, cost, privacy and licence — not by hype. Many use several.
 
 **Ask:** "If you were building an app for a hospital, would you send patient data to a closed API or run an open model in-house? Why?"

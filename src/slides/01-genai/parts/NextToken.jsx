@@ -14,10 +14,13 @@ const ROUNDS = [
 ]
 
 export default function NextToken() {
+  // One engine step = one generated token. The slide loops (meta.loop), so the
+  // sentence builds, holds complete for a beat, then starts again.
   const { step } = useSlide()
-  const k = Math.min(step, ROUNDS.length - 1) // tokens generated so far
+  const k = Math.min(step, ROUNDS.length) // tokens generated so far
   const generated = ROUNDS.slice(0, k).map((r) => r.pick)
-  const round = ROUNDS[k]
+  const done = k === ROUNDS.length
+  const round = ROUNDS[Math.min(k, ROUNDS.length - 1)]
   const max = round.cands[0][1]
 
   return (
@@ -36,8 +39,8 @@ export default function NextToken() {
                 exit={{ opacity: 0 }} transition={{ duration: 0.5, ease }}>{w}</motion.span>
             ))}
           </AnimatePresence>
-          <motion.span style={{ ...tokenStyle(true), background: 'transparent', border: '2px dashed var(--accent-line)', color: 'var(--accent)' }}
-            animate={{ opacity: [1, 0.35, 1] }} transition={{ duration: 1.4, repeat: Infinity }}>?</motion.span>
+          {!done && <motion.span style={{ ...tokenStyle(true), background: 'transparent', border: '2px dashed var(--accent-line)', color: 'var(--accent)' }}
+            animate={{ opacity: [1, 0.35, 1] }} transition={{ duration: 1.4, repeat: Infinity }}>?</motion.span>}
         </div>
         <div className="row" style={{ gap: 14, marginTop: 'auto', flexWrap: 'wrap' }}>
           {['Read all tokens', 'Score every possible next token', 'Pick one', 'Append & repeat'].map((s, i) => (
@@ -52,12 +55,12 @@ export default function NextToken() {
       {/* Right: probability bars for the next token */}
       <div className="card tint" style={{ padding: '44px 52px', gap: 30 }}>
         <div className="row" style={{ justifyContent: 'space-between', alignItems: 'baseline' }}>
-          <div className="label">Next-token probabilities</div>
-          <div className="small">illustrative</div>
+          <div className="label">{done ? 'Last pick' : `Choosing token ${k + 1}`}</div>
+          <div className="small">illustrative numbers</div>
         </div>
         <div className="col" style={{ gap: 20, flex: 1, justifyContent: 'space-evenly' }}>
           {round.cands.map(([w, p], i) => (
-            <div key={k + '-' + i} className="row" style={{ gap: 22, alignItems: 'center' }}>
+            <div key={Math.min(k, ROUNDS.length - 1) + '-' + i} className="row" style={{ gap: 22, alignItems: 'center' }}>
               <motion.span className="mono" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.35, delay: i * 0.05 }}
                 style={{ width: 170, flex: 'none', textAlign: 'right', fontSize: 36, fontWeight: i === 0 ? 600 : 400, color: i === 0 ? 'var(--accent)' : 'var(--ink-2)' }}>{w}</motion.span>
               <div style={{ flex: 1, height: 56, borderRadius: 12, background: 'var(--surface)', overflow: 'hidden' }}>

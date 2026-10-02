@@ -1,17 +1,18 @@
 import { Slide, Reveal, Em, Flow } from '../../components'
+import { User, Bot, Plug, Ticket } from 'lucide-react'
 import { ToolCall, BigCard } from './parts/bits'
 
 export const meta = {
   title: 'What just happened',
   steps: 1,
-  notes: `**Recap — and the fallback if the live demo failed.** Walk left to right.
+  notes: `**Recap — and the fallback if the live demo failed.** The four boxes cascade in left to right, then the trace panel builds underneath (~2 s). Walk it left to right.
 
 - **You** typed one sentence in plain English
 - **The agent** (an LLM with instructions) decided which tools to call, in what order
 - **The MCP server** exposed 12 tools — the agent discovered them, nobody hard-coded the flow
 - **The TicketTown backend** is the *same* system the website uses. The agent isn't a separate app; it's a new front door
 
-**Click →** the trace: three tool calls, one booking, then it *stopped and asked* before payment. That pause is the human-in-the-loop design.
+**Bottom panel — the trace:** three tool calls, one booking, then it *stopped and asked* before payment. That pause is the human-in-the-loop design.
 
 If the demo failed: "This is exactly what you would have seen. The code and guide are in the TicketTown repo — try it yourself."
 
@@ -21,10 +22,10 @@ If the demo failed: "This is exactly what you would have seen. The code and guid
 }
 
 const nodes = [
-  { icon: '🙋', title: 'You', text: '“Book 2 seats for Agent 404 tomorrow morning”' },
-  { icon: '🤖', title: 'Orchestrate agent', text: 'Understands the ask, plans which tools to call.', variant: 'tint' },
-  { icon: '🔌', title: 'MCP server', text: '12 tools: shows, seats, booking, pay.' },
-  { icon: '🎟️', title: 'TicketTown backend', text: 'The same seats the website sells.' },
+  { icon: User, title: 'You', text: '“Book 2 seats for Agent 404 tomorrow morning”' },
+  { icon: Bot, title: 'Orchestrate agent', text: 'Understands the ask, plans which tools to call.', variant: 'tint' },
+  { icon: Plug, title: 'MCP server', text: '12 tools: shows, seats, booking, pay.' },
+  { icon: Ticket, title: 'TicketTown backend', text: 'The same seats the website sells.' },
 ]
 
 const trace = [

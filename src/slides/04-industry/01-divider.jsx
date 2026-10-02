@@ -24,7 +24,7 @@ const topics = [
 
 export default function Divider() {
   return (
-    <SectionDivider section="industry" num={4} time="~25 min" topics={topics}
+    <SectionDivider section="industry" num={4} topics={topics}
       title={<>What the industry is <Em>building</Em></>}
       lede={'Enterprise agent platforms, two live demos, and how you get into this field.'} />
   )

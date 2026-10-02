@@ -1,3 +1,4 @@
+import { Handshake, Share2, UserCheck, ListTree, Network, Receipt, Users, Laptop, Plane } from 'lucide-react'
 import { Slide, Reveal, Em, Label } from '../../components'
 import { Stage, Pos, Wires, Wire } from './parts/kit'
 
@@ -8,7 +9,7 @@ export const meta = {
 
 Why not one giant agent? One agent with 40 tools and a 10-page prompt gets confused, slow and hard to test. Specialists are smaller, cheaper, testable. Same reason we split a monolith into services.
 
-But a team needs a manager. Orchestration handles four things (one per click):
+But a team needs a manager. Orchestration handles four things (they build in one by one):
 
 - **Coordination**: who does what, in what order
 - **Context sharing**: what agent A learned, agent B needs
@@ -21,14 +22,14 @@ But a team needs a manager. Orchestration handles four things (one per click):
 }
 
 const needs = [
-  { icon: '🤝', t: 'Coordination', d: 'Who does what, in what order' },
-  { icon: '🔗', t: 'Context sharing', d: 'Pass what one agent learned to the next' },
-  { icon: '🙋', t: 'Human-in-the-loop', d: 'Pause for approval on risky steps' },
-  { icon: '🗺️', t: 'Planning', d: 'Break a big goal into sub-tasks' },
+  { icon: <Handshake />, t: 'Coordination', d: 'Who does what, in what order' },
+  { icon: <Share2 />, t: 'Context sharing', d: 'Pass what one agent learned to the next' },
+  { icon: <UserCheck />, t: 'Human-in-the-loop', d: 'Pause for approval on risky steps' },
+  { icon: <ListTree />, t: 'Planning', d: 'Break a big goal into sub-tasks' },
 ]
 
 const team = [
-  { x: 0, y: 450, t: '🧾 Finance' }, { x: 205, y: 450, t: '🧑‍💼 HR' }, { x: 410, y: 450, t: '💻 IT' }, { x: 615, y: 450, t: '✈️ Travel' },
+  { x: 0, y: 450, I: Receipt, t: 'Finance' }, { x: 205, y: 450, I: Users, t: 'HR' }, { x: 410, y: 450, I: Laptop, t: 'IT' }, { x: 615, y: 450, I: Plane, t: 'Travel' },
 ]
 
 export default function MultiAgent() {
@@ -43,12 +44,13 @@ export default function MultiAgent() {
             </Wires>
             <Pos x={215} y={20} w={360} h={130} as="scale">
               <div className="card ink" style={{ width: '100%', padding: '16px 24px', alignItems: 'center', justifyContent: 'center' }}>
-                <div className="card-title">🎛️ Orchestrator</div>
+                <div className="row" style={{ gap: 14, alignItems: 'center' }}><span className="icon"><Network /></span><div className="card-title">Orchestrator</div></div>
               </div>
             </Pos>
             {team.map((a, i) => (
               <Pos key={i} x={a.x} y={a.y} w={175} h={100} delay={0.5 + i * 0.1}>
-                <div className="card tint" style={{ width: '100%', padding: '12px 10px', alignItems: 'center', justifyContent: 'center' }}>
+                <div className="card tint" style={{ width: '100%', padding: '12px 10px', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
+                  <a.I size={30} strokeWidth={1.6} style={{ color: 'var(--accent)' }} />
                   <span className="small" style={{ color: 'var(--ink)', fontWeight: 600, whiteSpace: 'nowrap' }}>{a.t}</span>
                 </div>
               </Pos>

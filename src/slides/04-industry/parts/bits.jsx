@@ -1,5 +1,13 @@
 // Small shared pieces for the Industry section (not a slide: lives in parts/).
+import { Wrench } from 'lucide-react'
 import { Reveal } from '../../../components'
+
+/** Lucide icon in a soft accent tile. One size per slide: pass the same `size` (tile px) to every tile. */
+export const IconTile = ({ of: Of, size = 72, style }) => (
+  <span className="icon-chip" style={{ width: size, height: size, borderRadius: Math.round(size / 4), ...style }}>
+    <Of strokeWidth={1.6} style={{ width: Math.round(size * 0.52), height: Math.round(size * 0.52) }} />
+  </span>
+)
 
 /** Outlined chip at readable size (24px via .small). tone: 'line' | 'accent' | 'ink' */
 export const Chip = ({ children, tone = 'line', style }) => (
@@ -25,7 +33,7 @@ export const LiveBadge = ({ label = 'Live demo' }) => (
   </span>
 )
 
-/** Numbered demo step row, revealed on click `at`. */
+/** Numbered demo step row, built in at step `at` (dims while later steps build, un-dims at the end). */
 export const DemoStep = ({ n, title, text, at, dim = true }) => (
   <Reveal at={at} as="left" dim={dim} className="row" style={{ gap: 28, alignItems: 'flex-start' }}>
     <div className="h3 accent mono" style={{ flex: 'none', width: 72, height: 72, borderRadius: 20, display: 'grid', placeItems: 'center', background: 'var(--accent-soft)', border: '1.5px solid var(--accent-line)' }}>{n}</div>
@@ -39,15 +47,16 @@ export const DemoStep = ({ n, title, text, at, dim = true }) => (
 /** Tool-call trace line used in chat mock-ups. */
 export const ToolCall = ({ name }) => (
   <div className="mono small" style={{ alignSelf: 'flex-start', display: 'inline-flex', gap: 12, alignItems: 'center', padding: '8px 16px', borderRadius: 12, background: 'var(--surface-2)', color: 'var(--ink-2)' }}>
-    <span className="accent">⚙</span>{name}
+    <Wrench className="accent" strokeWidth={1.8} style={{ width: 22, height: 22, flex: 'none' }} />{name}
   </div>
 )
 
-/** Card with a big icon pinned top and title/text pinned bottom — fills tall grid cells cleanly. */
-export const BigCard = ({ icon, num, title, text, variant = '', children, style }) => (
+/** Card with an icon tile pinned top and title/text pinned bottom — fills tall grid cells cleanly.
+ *  icon = a lucide component, e.g. icon={Bot} */
+export const BigCard = ({ icon, iconSize = 80, num, title, text, variant = '', children, style }) => (
   <div className={`card ${variant}`} style={{ flex: 1, justifyContent: 'space-between', ...style }}>
     <div className="row" style={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
-      <span style={{ fontSize: 64, lineHeight: 1 }}>{icon}</span>
+      {icon ? <IconTile of={icon} size={iconSize} style={variant === 'tint' ? { background: 'var(--surface)' } : undefined} /> : <span />}
       {num && <span className="tag-num">{num}</span>}
     </div>
     <div className="col" style={{ gap: 12 }}>

@@ -4,14 +4,14 @@ import { Chip } from './parts/bits'
 export const meta = {
   title: 'Skills and roles',
   steps: 1,
-  notes: `**Career slide 1 of 3.** The good news: most of this is stuff your CSE degree already starts.
+  notes: `**Career slide 1 of 3.** The four skill columns cascade in, then the black "roles" bar builds at the bottom (~2 s). The good news: most of this is stuff your CSE degree already starts.
 
 - **Foundations** — Python, APIs & JSON, Git, SQL. Agents are 80% normal software engineering
 - **AI layer** — how LLMs work (tokens, context, temperature), prompting, **evals** (testing non-deterministic output), agent frameworks, MCP
 - **Production** — cloud & containers, system design, security basics
 - **Domain** — banking, health, retail, logistics. The person who understands the *business process* designs the best agent
 
-**Click → roles that exist today** (I see these on real job boards and teams):
+**Bottom bar — roles that exist today** (all common titles on current job boards):
 - **AI engineer** — builds LLM features into products
 - **Agent developer** — tools, orchestration, MCP servers
 - **Eval / LLMOps engineer** — tests, monitors, measures quality and cost

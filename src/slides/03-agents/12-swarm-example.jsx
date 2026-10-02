@@ -1,18 +1,26 @@
+import { motion } from 'framer-motion'
+import { Compass, CreditCard, KeyRound, Headset } from 'lucide-react'
 import { Slide, Em } from '../../components'
+import { useSlide } from '../../engine/SlideContext'
 import { Stage, Pos, Wires, Wire, Node, Tag } from './parts/kit'
 
 export const meta = {
   title: 'Example: support triage (swarm)',
-  steps: 4,
+  steps: 8,
+  loop: true,
+  loopFrom: 4,
+  stepMs: 1000,
   notes: `Worked example: **Swarm pattern**: no boss, agents hand off to each other.
 
 The customer has *two* problems in one message.
 
-- Entry: **Triage** agent reads it
-- Click 1 → hands off to **Billing** ("double charge"), passing the whole conversation along
-- Click 2 → Billing starts the refund, notices the login issue, hands off to **Account**
-- Click 3 → Account sends a reset link; one combined reply goes back
-- Click 4 → guardrail: big refunds are handed to a **human**. Agents decide *who's next*, rules decide *what's allowed*
+The hand-offs build in order (~4 s), then a highlight replays the path on a loop: Triage → Billing → Account → reply.
+
+- **Triage** agent reads it
+- It hands off to **Billing** ("double charge"), passing the whole conversation along
+- Billing starts the refund, notices the login issue, hands off to **Account**
+- Account sends a reset link; one combined reply goes back
+- Guardrail: big refunds are handed to a **human**. Agents decide *who's next*, rules decide *what's allowed*
 
 Real-world: this is how many bank and telecom support bots are being rebuilt.
 
@@ -22,6 +30,18 @@ Real-world: this is how many bank and telecom support bots are being rebuilt.
 }
 
 const W = 1728, H = 740
+
+// After the build, steps 5–8 replay the hand-off path: 0 Triage → 1 Billing → 2 Account → 3 reply.
+function Hot({ i, radius = 'var(--radius)', children }) {
+  const { step } = useSlide()
+  const hot = step - 5 === i
+  return (
+    <motion.div style={{ display: 'flex', width: '100%', borderRadius: radius }}
+      animate={{ scale: hot ? 1.04 : 1, boxShadow: hot ? '0 0 0 4px var(--accent)' : '0 0 0 4px rgba(0,0,0,0)' }} transition={{ duration: 0.35 }}>
+      {children}
+    </motion.div>
+  )
+}
 
 export default function SwarmExample() {
   return (
@@ -42,10 +62,10 @@ export default function SwarmExample() {
         </Pos>
         <Wires w={W} h={H}><Wire d="M 530 85 L 632 85" tone="ink" delay={0.3} /></Wires>
 
-        <Pos x={640} y={0} w={420} h={170} as="scale"><Node variant="tint" icon="🧭" title="Triage" sub="Reads intent, picks who's next" /></Pos>
-        <Pos x={1298} y={0} w={430} h={170} at={1} as="scale"><Node variant="tint" icon="💳" title="Billing" sub="Spots duplicate charge, starts refund" /></Pos>
-        <Pos x={1298} y={300} w={430} h={170} at={2} as="scale"><Node variant="tint" icon="🔐" title="Account" sub="Verifies identity, sends reset link" /></Pos>
-        <Pos x={640} y={300} w={420} h={170} at={4} as="scale"><Node variant="flat" icon="🙋" title="Human agent" sub="Takes over for refunds above ₹5,000" /></Pos>
+        <Pos x={640} y={0} w={420} h={170} as="scale"><Hot i={0}><Node variant="tint" icon={<Compass />} title="Triage" sub="Reads intent, picks who's next" /></Hot></Pos>
+        <Pos x={1298} y={0} w={430} h={170} at={1} as="scale"><Hot i={1}><Node variant="tint" icon={<CreditCard />} title="Billing" sub="Spots duplicate charge, starts refund" /></Hot></Pos>
+        <Pos x={1298} y={300} w={430} h={170} at={2} as="scale"><Hot i={2}><Node variant="tint" icon={<KeyRound />} title="Account" sub="Verifies identity, sends reset link" /></Hot></Pos>
+        <Pos x={640} y={300} w={420} h={170} at={4} as="scale"><Node variant="flat" icon={<Headset />} title="Human agent" sub="Takes over for refunds above ₹5,000" /></Pos>
 
         <Pos x={1090} y={22} w={200} h={40} at={1} delay={0.4} as="fade" style={{ justifyContent: 'center' }}><Tag>① billing</Tag></Pos>
         <Pos x={1528} y={208} w={200} h={40} at={2} delay={0.4} as="fade"><Tag>② login</Tag></Pos>
@@ -53,7 +73,7 @@ export default function SwarmExample() {
         <Pos x={0} y={440} w={520} h={200} at={3} delay={0.5} as="right">
           <div className="col" style={{ gap: 10, width: '100%' }}>
             <span className="label">③ One reply</span>
-            <div className="bubble ai" style={{ maxWidth: '100%' }}>"Refund of the duplicate ₹1,299 started. Reset link sent to your email."</div>
+            <Hot i={3} radius="22px 22px 22px 6px"><div className="bubble ai" style={{ maxWidth: '100%' }}>"Refund of the duplicate ₹1,299 started. Reset link sent to your email."</div></Hot>
           </div>
         </Pos>
 

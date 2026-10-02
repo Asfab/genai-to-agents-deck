@@ -1,13 +1,13 @@
-import { Slide, Reveal, Em, Label } from '../../components'
+import { Slide, Reveal, Em } from '../../components'
 
 export const meta = {
   title: 'Three ways to build an agent',
   steps: 3,
-  notes: `Same agent, three doors. Pick the one that fits who you are.
+  notes: `Same agent, three doors. The three columns build in left to right (~3 s); talk through them in that order once they are all up.
 
-- **Click 1 — No-code UI:** create an agent, describe its job in plain English, add tools and knowledge, test in the preview chat, deploy. A business analyst can do this
-- **Click 2 — Pro-code with the ADK CLI:** \`pip install ibm-watsonx-orchestrate\`, add and activate an environment, then \`orchestrate agents import -f agent.yaml\`. Agent-as-code: it lives in Git, gets reviewed, versioned and deployed like any service. Pre-flight: check \`python --version\`, \`orchestrate --version\`
-- **Click 3 — With IBM Bob:** describe the agent to Bob in the IDE; Bob writes the YAML and the tools, then deploys it via the ADK
+- **01 — No-code UI:** create an agent, describe its job in plain English, add tools and knowledge, test in the preview chat, deploy. A business analyst can do this
+- **02 — Pro-code with the ADK CLI:** \`pip install ibm-watsonx-orchestrate\`, add and activate an environment, then \`orchestrate agents import -f agent.yaml\`. Agent-as-code: it lives in Git, gets reviewed, versioned and deployed like any service. Pre-flight: check \`python --version\`, \`orchestrate --version\`
+- **03 — With IBM Bob:** describe the agent to Bob in the IDE; Bob writes the YAML and the tools, then deploys it via the ADK
 
 **Ask:** "Who here would pick the UI? The CLI? Bob?" — CSE students usually pick CLI. Good: that's the one recruiters can see on your GitHub.
 
@@ -41,11 +41,11 @@ export default function ThreeWays() {
   return (
     <Slide section="industry" kicker="watsonx Orchestrate" title={<>Three ways to build the <Em>same</Em> agent</>}>
       <div className="fill" style={{ display: 'grid', gridTemplateColumns: '1fr 1.3fr 1fr', gap: 'var(--gap)' }}>
-        <Col at={1} num="01" title="No-code UI" who="Anyone" lede="Click through a guided builder in the browser." best="quick prototypes.">
+        <Col at={1} num="01" title="No-code UI" who="Anyone" lede="A guided builder in the browser. No code." best="quick prototypes.">
           <Steps items={['Create an agent, describe its job', 'Add tools and knowledge', 'Test in the preview chat', 'Deploy']} />
         </Col>
         <Col at={2} num="02" title="ADK + CLI" who="Developers" lede="Agent as YAML + Python. Lives in Git, ships like code." best="teams and CI/CD.">
-                    <div className="code">
+          <div className="code">
             <span className="c">$ </span>pip install \{'\n'}    ibm-watsonx-orchestrate{'\n'}
             <span className="c">$ </span>orchestrate env activate <span className="s">dev</span>{'\n'}
             <span className="c">$ </span>orchestrate agents import \{'\n'}    -f <span className="s">agent.yaml</span>
