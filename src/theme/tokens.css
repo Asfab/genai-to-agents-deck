@@ -5,36 +5,36 @@
    ───────────────────────────────────────────────────────────── */
 :root {
   /* surfaces (light, projector-friendly) */
-  --bg: #FAFAF7;
+  --bg: #FFFFFF;
   --surface: #FFFFFF;
-  --surface-2: #F2F1EC;
-  --line: #E4E2DA;
-  --line-strong: #CFCCC1;
+  --surface-2: #F6F6F7;
+  --line: #E8E8EA;
+  --line-strong: #D4D4D8;
 
   /* ink */
-  --ink: #111114;
-  --ink-2: #3D3D45;
-  --muted: #6B6B76;
-  --faint: #A3A3AD;
+  --ink: #0F0F0F;
+  --ink-2: #3F3F46;
+  --muted: #737373;
+  --faint: #ADADAD;
 
   /* brand accent + section hues (set per slide via data-section) */
-  --blue: #0F62FE;
-  --violet: #6D28D9;
-  --amber: #C2410C;
-  --emerald: #047857;
-  --rose: #BE123C;
-  --cyan: #0E7490;
+  --blue: #2563EB;
+  --violet: #7C3AED;
+  --amber: #D97706;
+  --emerald: #059669;
+  --rose: #E11D48;
+  --cyan: #0891B2;
 
-  --accent: var(--blue);
+  --accent: var(--violet);
 
   /* type */
-  --font-display: 'Inter Tight', 'Inter', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'DM Sans', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
   --font-serif: 'Instrument Serif', Georgia, serif;
   --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
 
   --fs-hero: 148px;   /* title / section dividers */
-  --fs-title: 76px;   /* slide headline */
+  --fs-title: 84px;   /* slide headline */
   --fs-h2: 48px;
   --fs-h3: 36px;
   --fs-lede: 36px;    /* sub-headline under title */
@@ -47,20 +47,16 @@
   --pad-top: 72px;
   --pad-bottom: 88px;
   --gap: 32px;
-  --radius: 24px;
+  --radius: 18px;
   --radius-sm: 14px;
-  --shadow: 0 1px 2px rgba(17,17,20,.04), 0 8px 28px rgba(17,17,20,.06);
+  --shadow: none;
 
   /* motion */
   --ease: cubic-bezier(.22, 1, .36, 1);
 }
 
 /* Section hues: <Slide section="genai"> sets data-section */
-[data-section='opening']   { --accent: var(--blue); }
-[data-section='genai']     { --accent: var(--violet); }
-[data-section='prompting'] { --accent: var(--amber); }
-[data-section='agents']    { --accent: var(--blue); }
-[data-section='industry']  { --accent: var(--emerald); }
+[data-section] { --accent: var(--violet); }   /* one accent everywhere, like Session 1 */
 
 /* derived from whichever accent is active (re-computed inside each section) */
 :root, [data-section] {

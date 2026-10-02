@@ -10,7 +10,7 @@ src/components/          <Slide>, <Reveal>, <Stagger>, <Card>, <Grid>, <Flow>, <
 src/engine/              deck navigation, phone remote, speaker view (don't touch for content changes)
 src/slides/<NN-section>/<NN-name>.jsx   one file per slide; ORDER = folder name then file name
 ```
-Sections: `00-opening` · `01-genai` (violet) · `02-prompting` (amber) · `03-agents` (blue) · `04-industry` (emerald).
+Sections: `00-opening` · `01-genai` · `02-prompting` · `03-agents` · `04-industry`. One violet accent everywhere, matching Session 1 (DM Sans + Instrument Serif italic headlines). Each act opens with `<SectionDivider>`.
 To insert a slide between `03-x.jsx` and `04-y.jsx`, name it `03b-z.jsx`.
 
 ## A slide file

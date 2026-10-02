@@ -2,3 +2,4 @@
 export { default as Slide } from './Slide'
 export * from './ui'
 export { ease, variants } from './motion'
+export { default as SectionDivider } from './SectionDivider'

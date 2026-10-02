@@ -13,7 +13,7 @@ const browser = await puppeteer.launch({
 })
 const page = await browser.newPage()
 await page.goto(`http://localhost:${PORT}/?shot#/1`, { waitUntil: 'networkidle2' })
-const total = await page.evaluate(() => Number(document.querySelector('.slide-footer .num')?.textContent.split('/')[1]) || 0)
+const total = await page.evaluate(() => window.__deckTotal || 0)
 const list = nums[0] === 'all' || !nums.length ? Array.from({ length: total || 1 }, (_, i) => i + 1) : nums.map(Number)
 for (const n of list) {
   await page.goto(`http://localhost:${PORT}/?shot&n=${n}#/${n}.99`, { waitUntil: 'networkidle2' })

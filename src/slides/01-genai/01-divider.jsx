@@ -1,4 +1,4 @@
-import { Slide, Reveal, Stagger, Em, Pill } from '../../components'
+import { SectionDivider, Em } from '../../components'
 
 export const meta = {
   title: '01 · Generative AI',
@@ -13,29 +13,18 @@ export const meta = {
 **Transition:** "Before the theory, let's see how much of this you've already been using."`,
 }
 
-const topics = ['AI → ML → DL → GenAI', 'Next-token prediction', 'Training & attention', 'Limits & use cases']
+const topics = [
+  'AI → ML → DL → GenAI',
+  'Next-token prediction',
+  'Tokens, training & attention',
+  'Limits: hallucination, no actions',
+  'Use cases & RAG',
+]
 
 export default function Divider() {
   return (
-    <Slide section="genai" footer={false}>
-      <div className="row fill" style={{ alignItems: 'stretch', gap: 0 }}>
-        <div className="col fill" style={{ justifyContent: 'space-between', gap: 40 }}>
-          <Reveal as="fade"><div className="divider-num">PART 01 · ~30 MIN</div></Reveal>
-          <div className="col" style={{ gap: 44 }}>
-            <Reveal delay={0.1}><h1 className="hero">Generative AI<br />&amp; how <Em>LLMs</Em> work</h1></Reveal>
-            <Reveal delay={0.3}><p className="lede">What's actually happening when ChatGPT "writes" — and where that's genuinely useful for you.</p></Reveal>
-          </div>
-          <Stagger delay={0.5} gap={0.07} as="fade" className="row" style={{ flexWrap: 'wrap', gap: 14 }}>
-            {topics.map((t) => <Pill key={t} outline>{t}</Pill>)}
-          </Stagger>
-        </div>
-        <Reveal as="scale" delay={0.15} style={{ display: 'grid', placeItems: 'center', width: 640, flex: 'none' }}>
-          <div aria-hidden style={{
-            fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 560, lineHeight: 0.8,
-            letterSpacing: '-0.06em', color: 'var(--accent-line)',
-          }}>01</div>
-        </Reveal>
-      </div>
-    </Slide>
+    <SectionDivider section="genai" num={1} time="~30 min" topics={topics}
+      title={<>Generative AI &amp; how <Em>LLMs</Em> work</>}
+      lede={'What\'s actually happening when ChatGPT "writes", and where that\'s genuinely useful for you.'} />
   )
 }

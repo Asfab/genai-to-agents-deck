@@ -7,6 +7,7 @@ import { hostRoom, newCode } from './transport'
 import { useScale } from './useScale'
 
 const total = slides.length
+window.__deckTotal = total // read by scripts/shot.mjs
 const readHash = () => {
   const [i, s] = location.hash.replace('#/', '').split('.').map(Number)
   const index = Math.min(Math.max((i || 1) - 1, 0), total - 1)
@@ -114,7 +115,7 @@ export default function Deck() {
   return (
     <>
       <div className="viewport">
-        <div className="canvas" style={{ transform: `scale(${scale})` }}>
+        <div className="canvas" style={{ transform: `translate(-50%, -50%) scale(${scale})` }}>
           <AnimatePresence initial={false} custom={dir} mode="popLayout">
             <motion.div key={slide.id} custom={dir} style={{ position: 'absolute', inset: 0 }}
               initial={{ opacity: 0, x: dir * 60 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: dir * -60 }}

@@ -1,5 +1,4 @@
-import { Slide, Reveal, Em, Pill } from '../../components'
-import { Chip } from './parts/bits'
+import { SectionDivider, Em } from '../../components'
 
 export const meta = {
   title: '04 · Industry & Careers',
@@ -15,25 +14,18 @@ export const meta = {
 **Transition:** "First — what's changed in the industry in the last two years?"`,
 }
 
+const topics = [
+  'From chatbots to agents',
+  'watsonx Orchestrate + demo',
+  'IBM Bob + demo',
+  'Skills, projects & resources',
+  'Q&A',
+]
+
 export default function Divider() {
   return (
-    <Slide section="industry" footer={false}>
-      <div className="row fill" style={{ alignItems: 'stretch', gap: 80 }}>
-        <Reveal as="scale" style={{ flex: '0 0 760px', display: 'flex', alignItems: 'center' }}>
-          <svg viewBox="0 0 400 300" style={{ width: '100%', height: 'auto', overflow: 'visible' }} aria-hidden>
-            <text x="-8" y="262" fontFamily="var(--font-display)" fontWeight="800" fontSize="300" letterSpacing="-18"
-              fill="var(--accent)">04</text>
-          </svg>
-        </Reveal>
-        <div className="col" style={{ flex: 1, justifyContent: 'center', gap: 40 }}>
-          <Reveal as="fade"><Pill>Act 4 · Industry &amp; Careers</Pill></Reveal>
-          <Reveal delay={0.15}><h1 className="hero">What the industry is <Em>building</Em></h1></Reveal>
-          <Reveal delay={0.3}><p className="lede">Enterprise agent platforms, two live demos, and how you get into this field.</p></Reveal>
-          <Reveal delay={0.45} as="fade" className="row" style={{ gap: 14, flexWrap: 'wrap' }}>
-            <Chip tone="accent">watsonx Orchestrate</Chip><Chip tone="accent">IBM Bob</Chip><Chip>Careers</Chip><Chip>Q&amp;A</Chip>
-          </Reveal>
-        </div>
-      </div>
-    </Slide>
+    <SectionDivider section="industry" num={4} time="~25 min" topics={topics}
+      title={<>What the industry is <Em>building</Em></>}
+      lede={'Enterprise agent platforms, two live demos, and how you get into this field.'} />
   )
 }

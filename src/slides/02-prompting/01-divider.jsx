@@ -1,4 +1,4 @@
-import { Slide, Reveal, Em, Pill } from '../../components'
+import { SectionDivider, Em } from '../../components'
 
 export const meta = {
   title: '02 · Prompt Engineering',
@@ -14,21 +14,18 @@ export const meta = {
 **Transition:** "Let's start with what you can and can't control."`,
 }
 
+const topics = [
+  'Weak vs strong prompts',
+  'Anatomy of a prompt',
+  'Few-shot & step-by-step',
+  'JSON output & system prompts',
+  'Prompts you can use tonight',
+]
+
 export default function Divider() {
   return (
-    <Slide section="prompting" footer={false}>
-      <div aria-hidden style={{ position: 'absolute', right: 40, bottom: -150, font: '800 760px/1 var(--font-display)', letterSpacing: '-.06em', color: 'var(--accent-soft)', pointerEvents: 'none' }}>02</div>
-      <div className="col fill" style={{ justifyContent: 'space-between', position: 'relative' }}>
-        <Reveal as="fade"><Pill>Act 02 · ~15 min</Pill></Reveal>
-        <div className="col" style={{ gap: 40 }}>
-          <Reveal delay={0.05}><div className="divider-num">02 — Prompting</div></Reveal>
-          <Reveal delay={0.12}><h1 className="hero">Prompt<br /><Em>Engineering</Em></h1></Reveal>
-          <Reveal delay={0.3}><p className="lede">Same model. Better words. Wildly better results.</p></Reveal>
-        </div>
-        <Reveal delay={0.5} as="fade" className="row small" style={{ gap: 28 }}>
-          <span>GenAI</span><span>→</span><span className="accent" style={{ fontWeight: 600 }}>Prompting</span><span>→</span><span>Agents</span><span>→</span><span>Industry</span>
-        </Reveal>
-      </div>
-    </Slide>
+    <SectionDivider section="prompting" num={2} time="~15 min" topics={topics}
+      title={<>Prompt <Em>Engineering</Em></>}
+      lede={'Same model. Better words. Wildly better results.'} />
   )
 }

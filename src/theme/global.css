@@ -12,8 +12,10 @@ body {
 }
 
 /* ── Stage: 1920×1080 canvas scaled to the window ── */
-.viewport { position: fixed; inset: 0; display: grid; place-items: center; background: var(--bg); overflow: hidden; }
-.canvas { width: 1920px; height: 1080px; position: relative; flex: none; transform-origin: center center; }
+.viewport { position: fixed; inset: 0; background: var(--bg); overflow: hidden; }
+/* centred with left/top 50% so it never drifts when the window is narrower than 1920px */
+.viewport > .canvas { position: absolute; left: 50%; top: 50%; }
+.canvas { width: 1920px; height: 1080px; flex: none; }
 
 /* ── Slide frame ── */
 .slide {
@@ -42,15 +44,15 @@ body {
   display: flex; align-items: center; gap: 14px;
 }
 .kicker::before { content: ''; width: 36px; height: 3px; border-radius: 2px; background: var(--accent); }
-.title { font: 700 var(--fs-title)/1.04 var(--font-display); letter-spacing: -.03em; color: var(--ink); max-width: 1600px; text-wrap: balance; }
-.hero { font: 800 var(--fs-hero)/.95 var(--font-display); letter-spacing: -.045em; text-wrap: balance; }
+.title { font: italic 400 var(--fs-title)/1.06 var(--font-serif); letter-spacing: -.01em; color: var(--ink); max-width: 1600px; text-wrap: balance; }
+.hero { font: italic 400 var(--fs-hero)/1 var(--font-serif); letter-spacing: -.015em; text-wrap: balance; }
 .lede { font: 400 var(--fs-lede)/1.35 var(--font-body); color: var(--ink-2); max-width: 1400px; text-wrap: pretty; }
 .h2 { font: 700 var(--fs-h2)/1.1 var(--font-display); letter-spacing: -.02em; }
 .h3 { font: 650 var(--fs-h3)/1.15 var(--font-display); letter-spacing: -.015em; }
 .body { font: 400 var(--fs-body)/1.45 var(--font-body); color: var(--ink-2); }
 .small { font: 400 var(--fs-small)/1.45 var(--font-body); color: var(--muted); }
 .mono { font-family: var(--font-mono); }
-.em { font-family: var(--font-serif); font-style: italic; font-weight: 400; letter-spacing: -.01em; color: var(--accent); }
+.em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent); }
 .accent { color: var(--accent); }
 .muted { color: var(--muted); }
 .head { display: flex; flex-direction: column; gap: 20px; }
