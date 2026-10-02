@@ -25,7 +25,7 @@ export default function NextToken() {
       {/* Left: the growing sentence */}
       <div className="card" style={{ padding: '44px 52px', gap: 28 }}>
         <div className="label">Text so far</div>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px 14px', alignContent: 'flex-start', minHeight: 300 }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px 14px', alignContent: 'center', flex: 1 }}>
           {PROMPT.map((w) => (
             <span key={w} style={tokenStyle(false)}>{w}</span>
           ))}
@@ -55,14 +55,14 @@ export default function NextToken() {
           <div className="label">Next-token probabilities</div>
           <div className="small">illustrative</div>
         </div>
-        <div className="col" style={{ gap: 26, flex: 1, justifyContent: 'center' }}>
+        <div className="col" style={{ gap: 20, flex: 1, justifyContent: 'space-evenly' }}>
           {round.cands.map(([w, p], i) => (
             <div key={k + '-' + i} className="row" style={{ gap: 22, alignItems: 'center' }}>
               <motion.span className="mono" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.35, delay: i * 0.05 }}
-                style={{ width: 170, flex: 'none', textAlign: 'right', fontSize: 32, fontWeight: i === 0 ? 600 : 400, color: i === 0 ? 'var(--accent)' : 'var(--ink-2)' }}>{w}</motion.span>
-              <div style={{ flex: 1, height: 40, borderRadius: 10, background: 'var(--surface)', overflow: 'hidden' }}>
+                style={{ width: 170, flex: 'none', textAlign: 'right', fontSize: 36, fontWeight: i === 0 ? 600 : 400, color: i === 0 ? 'var(--accent)' : 'var(--ink-2)' }}>{w}</motion.span>
+              <div style={{ flex: 1, height: 56, borderRadius: 12, background: 'var(--surface)', overflow: 'hidden' }}>
                 <motion.div initial={{ width: 0 }} animate={{ width: `${(p / max) * 100}%` }} transition={{ duration: 0.7, ease, delay: 0.1 + i * 0.06 }}
-                  style={{ height: '100%', borderRadius: 10, background: i === 0 ? 'var(--accent)' : 'var(--accent-line)' }} />
+                  style={{ height: '100%', borderRadius: 12, background: i === 0 ? 'var(--accent)' : 'var(--accent-line)' }} />
               </div>
               <span className="mono" style={{ width: 80, flex: 'none', fontSize: 28, color: i === 0 ? 'var(--accent)' : 'var(--muted)' }}>{p}%</span>
             </div>
@@ -75,6 +75,6 @@ export default function NextToken() {
 
 const tokenStyle = (gen) => ({
   display: 'inline-flex', alignItems: 'center', padding: '12px 22px', borderRadius: 14,
-  fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 52, lineHeight: 1.1, letterSpacing: '-0.02em',
+  fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 60, lineHeight: 1.1, letterSpacing: '-0.02em',
   background: gen ? 'var(--accent)' : 'var(--surface-2)', color: gen ? 'var(--surface)' : 'var(--ink)',
 })

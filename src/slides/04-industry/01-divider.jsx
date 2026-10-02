@@ -22,7 +22,7 @@ export default function Divider() {
         <Reveal as="scale" style={{ flex: '0 0 760px', display: 'flex', alignItems: 'center' }}>
           <svg viewBox="0 0 400 300" style={{ width: '100%', height: 'auto', overflow: 'visible' }} aria-hidden>
             <text x="-8" y="262" fontFamily="var(--font-display)" fontWeight="800" fontSize="300" letterSpacing="-18"
-              fill="var(--accent-soft)" stroke="var(--accent)" strokeWidth="2.5">04</text>
+              fill="var(--accent)">04</text>
           </svg>
         </Reveal>
         <div className="col" style={{ flex: 1, justifyContent: 'center', gap: 40 }}>

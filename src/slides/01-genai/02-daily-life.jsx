@@ -1,4 +1,5 @@
-import { Slide, Stagger, Card, Em } from '../../components'
+import { Slide, Stagger, Em } from '../../components'
+import IconCard from './parts/IconCard'
 
 export const meta = {
   title: "You've already used GenAI",
@@ -28,7 +29,7 @@ export default function DailyLife() {
   return (
     <Slide section="genai" kicker="Hook" title={<>You've already used GenAI <Em>this week</Em></>}>
       <Stagger className="grid" gap={0.07} style={{ gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', gridTemplateRows: '1fr 1fr' }}>
-        {items.map((it) => <Card key={it.title} icon={it.icon} title={it.title} text={it.text} style={{ justifyContent: 'flex-start' }} />)}
+        {items.map((it) => <IconCard key={it.title} icon={it.icon} title={it.title} text={it.text} />)}
       </Stagger>
     </Slide>
   )

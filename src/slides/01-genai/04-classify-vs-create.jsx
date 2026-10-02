@@ -15,14 +15,14 @@ export const meta = {
 }
 
 const Panel = ({ tag, title, sub, input, output, outputClass, variant }) => (
-  <Card variant={variant} style={{ gap: 26, padding: '40px 48px' }}>
+  <Card variant={variant} style={{ gap: 14, padding: '32px 44px' }}>
     <Label>{tag}</Label>
     <div className="h2">{title}</div>
-    <div className="body" style={{ marginTop: -6 }}>{sub}</div>
-    <div className="col" style={{ gap: 14, marginTop: 'auto' }}>
+    <div className="body">{sub}</div>
+    <div className="col" style={{ gap: 10, marginTop: 'auto' }}>
       <Label>Input</Label>
       <div className="prompt-box">{input}</div>
-      <div className="accent" style={{ fontSize: 40, lineHeight: 1, textAlign: 'center' }}>↓</div>
+      <div className="accent" style={{ fontSize: 32, lineHeight: 1, textAlign: 'center' }}>↓</div>
       <Label>Output</Label>
       <div className={`prompt-box ${outputClass}`}>{output}</div>
     </div>
@@ -42,7 +42,7 @@ export default function ClassifyVsCreate() {
             input="Write a polite leave request to my HOD for Friday." output="Dear Sir, I request leave on Friday as I have to attend…" outputClass="good" />
         </Reveal>
         <Reveal at={2} as="scale" style={{ gridColumn: '1 / -1' }}>
-          <div className="card ink" style={{ padding: '28px 44px', flexDirection: 'row', alignItems: 'center', gap: 24 }}>
+          <div className="card ink" style={{ padding: '24px 44px', flexDirection: 'row', alignItems: 'center', gap: 24 }}>
             <span className="h3">Generative models learn what data <i>looks like</i> — so they can produce more of it.</span>
           </div>
         </Reveal>

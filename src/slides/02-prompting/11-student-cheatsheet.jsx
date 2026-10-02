@@ -34,7 +34,7 @@ export default function StudentCheatsheet() {
               <div className="icon">{t.icon}</div>
               <div className="card-title">{t.title}</div>
             </div>
-            <div className="prompt-box good fill" style={{ fontSize: 'var(--fs-small)', display: 'flex', alignItems: 'center' }}>{t.p}</div>
+            <div className="prompt-box good fill" style={{ display: 'flex', alignItems: 'center' }}>{t.p}</div>
           </div>
         ))}
       </Stagger>

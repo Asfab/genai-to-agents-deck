@@ -14,14 +14,16 @@ export const meta = {
 **Transition:** "Enough slides. Let's build one live."`,
 }
 
-const Col = ({ at, num, title, who, children }) => (
+const Col = ({ at, num, title, who, lede, best, children }) => (
   <Reveal at={at} className="card" style={{ flex: 1, gap: 20 }}>
     <div className="row" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
       <span className="mono accent h3">{num}</span>
       <span className="pill outline">{who}</span>
     </div>
     <div className="h2">{title}</div>
-    <div className="col fill" style={{ gap: 14, justifyContent: 'flex-end' }}>{children}</div>
+    <div className="body">{lede}</div>
+    <div className="col fill" style={{ gap: 14, justifyContent: 'center' }}>{children}</div>
+    <div className="small" style={{ borderTop: '1px solid var(--line)', paddingTop: 18 }}><b className="accent">Best for</b> {best}</div>
   </Reveal>
 )
 
@@ -38,19 +40,18 @@ const Steps = ({ items }) => (
 export default function ThreeWays() {
   return (
     <Slide section="industry" kicker="watsonx Orchestrate" title={<>Three ways to build the <Em>same</Em> agent</>}>
-      <div className="row fill" style={{ alignItems: 'stretch' }}>
-        <Col at={1} num="01" title="No-code UI" who="Anyone">
+      <div className="fill" style={{ display: 'grid', gridTemplateColumns: '1fr 1.3fr 1fr', gap: 'var(--gap)' }}>
+        <Col at={1} num="01" title="No-code UI" who="Anyone" lede="Click through a guided builder in the browser." best="quick prototypes.">
           <Steps items={['Create an agent, describe its job', 'Add tools and knowledge', 'Test in the preview chat', 'Deploy']} />
         </Col>
-        <Col at={2} num="02" title="ADK + CLI" who="Developers">
-          <Label>Agent-as-code</Label>
-          <div className="code">
-            <span className="c">$ </span>pip install ibm-watsonx-orchestrate{'\n'}
+        <Col at={2} num="02" title="ADK + CLI" who="Developers" lede="Agent as YAML + Python. Lives in Git, ships like code." best="teams and CI/CD.">
+                    <div className="code">
+            <span className="c">$ </span>pip install \{'\n'}    ibm-watsonx-orchestrate{'\n'}
             <span className="c">$ </span>orchestrate env activate <span className="s">dev</span>{'\n'}
             <span className="c">$ </span>orchestrate agents import \{'\n'}    -f <span className="s">agent.yaml</span>
           </div>
         </Col>
-        <Col at={3} num="03" title="With IBM Bob" who="AI-assisted">
+        <Col at={3} num="03" title="With IBM Bob" who="AI-assisted" lede="Describe it in English. Bob writes and deploys it." best="idea → deployed, fast.">
           <div className="prompt-box">“Build an agent that books movie seats using the TicketTown MCP server.”</div>
           <div className="small" style={{ color: 'var(--ink-2)' }}>Bob writes the YAML and tools, then deploys with the ADK.</div>
         </Col>

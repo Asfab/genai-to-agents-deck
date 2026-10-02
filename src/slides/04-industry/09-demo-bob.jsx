@@ -43,7 +43,7 @@ export default function DemoBob() {
             <span className="k">kind:</span> native{'\n'}
             <span className="k">name:</span> <span className="s">teena</span>{'\n'}
             <span className="k">description:</span> <span className="s">Books movie tickets at TicketTown</span>{'\n'}
-            <span className="k">tools:</span> [get_showtimes_for_movie, suggest_seats, create_booking]{'\n'}
+            <span className="k">tools:</span>{'\n'}  - get_showtimes_for_movie{'\n'}  - suggest_seats{'\n'}  - create_booking{'\n'}
             <Reveal at={3} tag="span" as="fade"><span className="c">$ orchestrate agents import -f teena.yaml</span>{'\n'}<span className="s">✓ Agent 'teena' imported</span></Reveal>
           </Reveal>
         </Reveal>

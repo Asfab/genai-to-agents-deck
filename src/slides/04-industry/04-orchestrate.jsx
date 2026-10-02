@@ -1,4 +1,5 @@
-import { Slide, Reveal, Stagger, Card, Em } from '../../components'
+import { Slide, Reveal, Stagger, Em } from '../../components'
+import { BigCard, Chip } from './parts/bits'
 
 export const meta = {
   title: 'IBM watsonx Orchestrate',
@@ -18,10 +19,10 @@ This is what I work on day to day. Keep it personal: "My team ships this."
 }
 
 const pillars = [
-  { num: '01', icon: '🛠️', title: 'Build', text: 'No-code in the browser, or agent-as-code with the ADK.' },
-  { num: '02', icon: '🔌', title: 'Connect', text: 'Tools from an OpenAPI spec, an MCP server, or Python. Plus a pre-built catalog.' },
-  { num: '03', icon: '🧭', title: 'Orchestrate', text: 'A supervisor routes work to specialist agents and workflows.' },
-  { num: '04', icon: '🛡️', title: 'Govern', text: 'Versions, access control, audit logs, rollback, analytics.' },
+  { num: '01', icon: '🛠️', title: 'Build', text: 'No-code in the browser, or agent-as-code with the ADK.', chips: ['No-code', 'ADK + CLI'] },
+  { num: '02', icon: '🔌', title: 'Connect', text: 'Give agents tools, or pick from a pre-built catalog.', chips: ['OpenAPI', 'MCP', 'Python'] },
+  { num: '03', icon: '🧭', title: 'Orchestrate', text: 'A supervisor routes work to specialist agents and workflows.', chips: ['Multi-agent', 'Workflows'] },
+  { num: '04', icon: '🛡️', title: 'Govern', text: 'One control plane for every agent, wherever it was built.', chips: ['Audit', 'Rollback', 'Analytics'] },
 ]
 
 export default function Orchestrate() {
@@ -31,7 +32,9 @@ export default function Orchestrate() {
       lede="IBM's agentic platform: your agents, third-party agents, and the tools they use, under one control plane.">
       <Stagger className="grid" style={{ gridTemplateColumns: 'repeat(4, 1fr)' }}>
         {pillars.map((p, i) => (
-          <Card key={p.num} variant={i === 3 ? 'tint' : ''} num={p.num} icon={p.icon} title={p.title} text={p.text} style={{ justifyContent: 'flex-end' }} />
+          <BigCard key={p.num} variant={i === 3 ? 'tint' : ''} num={p.num} icon={p.icon} title={p.title} text={p.text}>
+            <div className="row" style={{ gap: 10, flexWrap: 'wrap', marginTop: 8 }}>{p.chips.map((c) => <Chip key={c} tone="accent">{c}</Chip>)}</div>
+          </BigCard>
         ))}
       </Stagger>
       <Reveal delay={0.7} as="fade" className="card ink" style={{ flex: 'none', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: '28px 40px' }}>

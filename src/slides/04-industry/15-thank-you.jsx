@@ -1,4 +1,4 @@
-import { Slide, Reveal, Em, Pill } from '../../components'
+import { Slide, Reveal, Em } from '../../components'
 
 export const meta = {
   title: 'Thank you',
@@ -24,7 +24,7 @@ export default function ThankYou() {
   return (
     <Slide section="industry" footer={false}>
       <div className="col fill" style={{ justifyContent: 'space-between' }}>
-        <Reveal as="fade"><Pill>Thank you</Pill></Reveal>
+        <Reveal as="fade"><div className="h2">Thank you<span className="accent">.</span></div></Reveal>
         <div className="col" style={{ gap: 40 }}>
           <Reveal delay={0.1}><h1 className="hero">Go build an agent<br /><Em>this weekend.</Em></h1></Reveal>
           <Reveal delay={0.3}><p className="lede">Then show me what it does. I'd genuinely love to see it.</p></Reveal>

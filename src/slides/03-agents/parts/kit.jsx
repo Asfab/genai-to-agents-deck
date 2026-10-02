@@ -69,7 +69,7 @@ export const Node = ({ variant = '', icon, title, sub, center, style, children }
   }}>
     {(icon || title) && (
       <div className="row" style={{ gap: 14, alignItems: 'center', justifyContent: center ? 'center' : undefined }}>
-        {icon && <span className="icon" style={{ fontSize: undefined }}>{icon}</span>}
+        {icon && <span className="icon">{icon}</span>}
         {title && <div className="card-title">{title}</div>}
       </div>
     )}

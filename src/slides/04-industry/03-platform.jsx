@@ -18,13 +18,14 @@ export const meta = {
 **Transition:** "This is the picture. watsonx Orchestrate is IBM's product for it — let's look closer."`,
 }
 
-const Layer = ({ title, sub, chips, at, style }) => (
+const Layer = ({ title, sub, chips, foot, at, style }) => (
   <Reveal at={at} className="card" style={{ padding: '22px 28px', gap: 14, ...style }}>
     <div className="row" style={{ gap: 14, alignItems: 'baseline', justifyContent: 'space-between' }}>
       <div className="h3">{title}</div>
       {sub && <span className="mono small accent">{sub}</span>}
     </div>
     <div className="row" style={{ gap: 10, flexWrap: 'wrap' }}>{chips.map((c) => <Chip key={c}>{c}</Chip>)}</div>
+    <div className="small" style={{ marginTop: 'auto', paddingTop: 14, borderTop: '1px solid var(--line)' }}>{foot}</div>
   </Reveal>
 )
 
@@ -43,12 +44,12 @@ const Down = ({ at, col }) => (
 export default function Platform() {
   return (
     <Slide section="industry" kicker="The enterprise picture" title={<>One platform. Agents, tools and models <Em>anywhere</Em></>}>
-      <div className="fill" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 300px', gridTemplateRows: 'auto 26px auto 26px 1fr auto', columnGap: 24, rowGap: 10 }}>
+      <div className="fill" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 300px', gridTemplateRows: 'auto 26px auto 26px 1fr', columnGap: 24, rowGap: 10 }}>
         {/* Channels */}
-        <Reveal style={{ gridColumn: '1 / 4' }} className="card flat" >
-          <div className="row" style={{ gap: 20, alignItems: 'center', padding: '0', flexWrap: 'wrap' }}>
-            <span className="label">End users, in any channel</span>
-            {['Slack', 'Microsoft Teams', 'WhatsApp', 'Voice', 'Salesforce', 'Web & API'].map((c) => <Chip key={c}>{c}</Chip>)}
+        <Reveal style={{ gridColumn: '1 / 4', padding: '20px 28px' }} className="card flat">
+          <div className="row" style={{ gap: 16, alignItems: 'center', justifyContent: 'space-between' }}>
+            <span className="label">Channels</span>
+            {['Slack', 'Teams', 'WhatsApp', 'Voice', 'Salesforce', 'Web & API'].map((c) => <Chip key={c}>{c}</Chip>)}
           </div>
         </Reveal>
         <Down at={1} col="1 / 4" />
@@ -67,23 +68,24 @@ export default function Platform() {
         <Down at={2} col="1" /><Down at={3} col="2" /><Down at={4} col="3" />
 
         {/* Anywhere layers */}
-        <Layer at={2} title="Agents" sub="deployed anywhere" chips={['watsonx Orchestrate', 'Agentforce', 'Amazon AgentCore', 'Copilot', 'LangGraph', 'Langflow']} style={{ gridColumn: '1', gridRow: '5' }} />
-        <Layer at={3} title="Tools" sub="running anywhere" chips={['Enterprise apps', 'Automation', 'Collaboration', 'APIs', 'Your data']} style={{ gridColumn: '2', gridRow: '5' }} />
-        <Layer at={4} title="Models" sub="hosted anywhere" chips={['IBM Granite', 'Claude', 'OpenAI', 'Bedrock', 'Azure AI']} style={{ gridColumn: '3', gridRow: '5' }} />
+        <Layer at={2} title="Agents" sub="deployed anywhere" chips={['watsonx Orchestrate', 'Agentforce', 'Amazon AgentCore', 'Copilot', 'LangGraph', 'Langflow']} foot="Any vendor, any framework. They talk over A2A." style={{ gridColumn: '1', gridRow: '5' }} />
+        <Layer at={3} title="Tools" sub="running anywhere" chips={['Enterprise apps', 'Automation', 'Collaboration', 'APIs', 'Your data']} foot="Exposed once via MCP, reused by every agent." style={{ gridColumn: '2', gridRow: '5' }} />
+        <Layer at={4} title="Models" sub="hosted anywhere" chips={['IBM Granite', 'Claude', 'OpenAI', 'Bedrock', 'Azure AI']} foot="Swap the model without rewriting the agent." style={{ gridColumn: '3', gridRow: '5' }} />
 
         {/* AgentOps rail */}
-        <Reveal at={5} as="left" className="card ink" style={{ gridColumn: '4', gridRow: '1 / 6', padding: '28px 28px', gap: 18, justifyContent: 'center' }}>
-          <div className="label" style={{ color: 'rgba(255,255,255,.6)' }}>AgentOps</div>
-          {['Evaluate', 'Monitor', 'Trace logs', 'Optimize'].map((x) => (
-            <div key={x} className="h3" style={{ borderTop: '1px solid rgba(255,255,255,.18)', paddingTop: 16 }}>{x}</div>
-          ))}
-          <div className="small">Governance for every agent, wherever it runs.</div>
+        <Reveal at={5} as="left" className="card ink" style={{ gridColumn: '4', gridRow: '1 / 6', padding: '32px 30px', gap: 18, justifyContent: 'space-between' }}>
+          <div className="col" style={{ gap: 18 }}>
+            <div className="label" style={{ color: 'inherit', opacity: .6 }}>AgentOps</div>
+            {['Evaluate', 'Monitor', 'Trace logs', 'Optimize'].map((x) => (
+              <div key={x} className="h3" style={{ borderTop: '1px solid rgba(255,255,255,.18)', paddingTop: 16 }}>{x}</div>
+            ))}
+          </div>
+          <div className="col" style={{ gap: 10 }}>
+            <div className="label" style={{ color: 'inherit', opacity: .6 }}>Runs on</div>
+            <div className="small">SaaS (AWS, IBM Cloud) or hybrid on Red Hat OpenShift</div>
+          </div>
         </Reveal>
 
-        {/* Hosting bar */}
-        <Reveal at={5} as="fade" className="row small" style={{ gridColumn: '1 / 5', gridRow: '6', justifyContent: 'center', gap: 16, paddingTop: 6 }}>
-          <span className="label">Runs on</span> SaaS (AWS, IBM Cloud) · hybrid cloud on Red Hat OpenShift
-        </Reveal>
       </div>
     </Slide>
   )

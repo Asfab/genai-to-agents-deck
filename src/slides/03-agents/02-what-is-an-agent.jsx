@@ -16,17 +16,17 @@ export const meta = {
 **Transition:** "So how is this different from the chatbot you already use?"`,
 }
 
-const W = 1728, H = 500
+const W = 1728, H = 540
 
 export default function WhatIsAgent() {
   return (
     <Slide section="agents" kicker="Agent anatomy" title={<>An agent is an LLM that can <Em>act</Em></>}
-      lede="A system that autonomously executes tasks, using an LLM as its reasoning engine.">
+      lede="A system that executes tasks on its own, with an LLM as its reasoning engine.">
       <Stage w={W} h={H}>
         <Wires w={W} h={H}>
           <Wire d="M 634 210 L 470 210" at={1} both />
           <Wire d="M 1094 210 L 1258 210" at={2} both />
-          <Wire d="M 1010 400 C 1010 488, 718 488, 718 410" at={3} width={4} />
+          <Wire d="M 1000 398 C 1000 462, 728 462, 728 404" at={3} width={4} />
         </Wires>
 
         <Pos x={634} y={30} w={460} h={360} as="scale">
@@ -41,7 +41,7 @@ export default function WhatIsAgent() {
           <Node variant="tint" icon="📒" title="Memory" sub="Notebook. The conversation so far, plus facts it knows about you." />
         </Pos>
 
-        <Pos x={614} y={440} w={500} h={60} at={3} as="fade" style={{ justifyContent: 'center', alignItems: 'center' }}>
+        <Pos x={564} y={472} w={600} h={60} at={3} as="fade" style={{ justifyContent: 'center', alignItems: 'center' }}>
           <span className="h3 accent">🔁 Loop until the goal is met</span>
         </Pos>
       </Stage>

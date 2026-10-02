@@ -37,7 +37,7 @@ export function AnatomyList({ parts }) {
 export function AnatomyPrompt({ parts }) {
   const { step } = useSlide()
   return (
-    <div className="prompt-box" style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 18, padding: '32px 40px', whiteSpace: 'normal' }}>
+    <div className="prompt-box" style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 16, padding: '28px 44px', whiteSpace: 'normal', fontSize: 'var(--fs-body)' }}>
       {parts.map((p, i) => {
         const state = step === i ? 'cur' : step > i ? 'done' : 'todo'
         return (

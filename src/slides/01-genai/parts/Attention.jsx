@@ -25,7 +25,7 @@ export default function Attention() {
     document.fonts?.ready.then(measure)
   }, [v.last])
 
-  const H = 250 // vertical space above words for arcs
+  const H = 270 // vertical space above words for arcs
   return (
     <div ref={box} style={{ position: 'relative', paddingTop: H }}>
       <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', overflow: 'visible', pointerEvents: 'none' }}>

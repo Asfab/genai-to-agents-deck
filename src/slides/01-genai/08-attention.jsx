@@ -15,7 +15,7 @@ export const meta = {
 }
 
 const points = [
-  { icon: '👀', title: 'Every token looks at every other', text: 'and decides which ones matter for its meaning.' },
+  { icon: '👀', title: 'Tokens look at each other', text: 'Each one decides which others matter for its meaning.' },
   { icon: '⚡', title: 'All at once, in parallel', text: 'Older models read word by word. This runs fast on GPUs.' },
   { icon: '🧱', title: 'Stack it many layers deep', text: "That's the Transformer — the T in GPT (2017)." },
 ]
@@ -23,7 +23,7 @@ const points = [
 export default function AttentionSlide() {
   return (
     <Slide section="genai" kicker="The breakthrough idea" title={<>Attention: what does <Em>"it"</Em> mean?</>}>
-      <Card style={{ padding: '24px 40px 44px', flex: 'none', gap: 0 }}>
+      <Card style={{ padding: '24px 40px 32px', flex: 'none', gap: 0 }}>
         <div className="row" style={{ justifyContent: 'space-between' }}>
           <Label>Change one word, and the arcs move</Label>
           <Reveal at={1} as="fade"><span className="pill">“tired” → “wide”</span></Reveal>

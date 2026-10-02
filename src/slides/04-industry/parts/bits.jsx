@@ -42,3 +42,18 @@ export const ToolCall = ({ name }) => (
     <span className="accent">⚙</span>{name}
   </div>
 )
+
+/** Card with a big icon pinned top and title/text pinned bottom — fills tall grid cells cleanly. */
+export const BigCard = ({ icon, num, title, text, variant = '', children, style }) => (
+  <div className={`card ${variant}`} style={{ flex: 1, justifyContent: 'space-between', ...style }}>
+    <div className="row" style={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
+      <span style={{ fontSize: 64, lineHeight: 1 }}>{icon}</span>
+      {num && <span className="tag-num">{num}</span>}
+    </div>
+    <div className="col" style={{ gap: 12 }}>
+      <div className="h2">{title}</div>
+      {text && <div className="card-text">{text}</div>}
+      {children}
+    </div>
+  </div>
+)

@@ -21,8 +21,8 @@ const projects = [
   { lvl: 'Beginner', icon: '🌦️', title: 'Weather assistant', text: 'A public API as a tool, straight from its OpenAPI spec.', learn: 'Tools' },
   { lvl: 'Beginner', icon: '🐙', title: 'Ask-a-GitHub-repo', text: 'Plug in an existing MCP server with just a URL.', learn: 'MCP' },
   { lvl: 'Intermediate', icon: '🎓', title: 'College helpdesk', text: 'Answers from syllabus & circular PDFs, with citations.', learn: 'RAG' },
-  { lvl: 'Intermediate', icon: '💸', title: 'UPI expense tracker', text: 'Python tool parses spends, writes a weekly summary.', learn: 'Custom tools' },
-  { lvl: 'Advanced', icon: '🎬', title: 'Multi-agent concierge', text: 'Supervisor + booking + food agents, with an eval set.', learn: 'Orchestration + evals' },
+  { lvl: 'Intermediate', icon: '💸', title: 'UPI expense tracker', text: 'Python tool parses spends, writes a weekly summary.', learn: 'Python tools' },
+  { lvl: 'Advanced', icon: '🎬', title: 'Multi-agent concierge', text: 'Supervisor + booking + food agents, with an eval set.', learn: 'Multi-agent' },
 ]
 
 export default function Projects() {

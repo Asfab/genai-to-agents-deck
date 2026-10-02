@@ -19,7 +19,7 @@ export const meta = {
 }
 
 const fixes = [
-  { icon: '🌫️', title: 'Too generic?', text: 'Add context: who, why, for what.' },
+  { icon: '🤷', title: 'Too generic?', text: 'Add context: who, why, for what.' },
   { icon: '🎲', title: 'Inconsistent?', text: 'Add 1–2 examples of the output.' },
   { icon: '📐', title: 'Wrong format?', text: 'Spell out the exact structure.' },
   { icon: '🙈', title: 'Ignores a rule?', text: 'State it plainly, and put it last.' },
@@ -28,15 +28,15 @@ const fixes = [
 export default function Iterate() {
   return (
     <Slide section="prompting" kicker="Iterate & refine" title={<>Your first prompt is a <Em>first draft</Em></>}>
-      <Flow style={{ flex: 1 }} nodes={[
-        <Card variant="tint" num="01" title="Draft" text="Write your best first try" />,
-        <Card variant="tint" num="02" title="Run" text="See what comes back" />,
-        <Card variant="tint" num="03" title="Inspect" text="What's wrong or missing?" />,
-        <Card variant="ink" num="04 ↺" title="Refine" text="Change one thing, run again" />,
+      <Flow style={{ flex: 'none', height: 290 }} nodes={[
+        <Card variant="tint" num="01" icon="✍️" title="Draft" text="Write your best first try" />,
+        <Card variant="tint" num="02" icon="▶️" title="Run" text="See what comes back" />,
+        <Card variant="tint" num="03" icon="🔍" title="Inspect" text="What's wrong or missing?" />,
+        <Card variant="ink" num="04 · repeat ↺" icon="🔧" title="Refine" text="Change one thing, run again" />,
       ]} />
       <Label>Symptom → fix</Label>
       <Stagger at={1} className="grid" style={{ gridTemplateColumns: 'repeat(4, 1fr)', flex: 1 }}>
-        {fixes.map((f) => <Card key={f.title} icon={f.icon} title={f.title} text={f.text} />)}
+        {fixes.map((f) => <Card key={f.title} icon={f.icon} title={f.title} text={<>→ {f.text}</>} style={{ justifyContent: 'center' }} />)}
       </Stagger>
     </Slide>
   )

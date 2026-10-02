@@ -29,7 +29,7 @@ export default function Hallucination() {
       <div className="grid" style={{ gridTemplateColumns: '1fr 1fr' }}>
         <Card variant="flat" style={{ gap: 26, padding: '40px 44px' }}>
           <Label>A real-looking chat</Label>
-          <Chat style={{ flex: 1 }} messages={[
+          <Chat style={{ flex: 1, justifyContent: 'center' }} messages={[
             { from: 'user', text: 'What did our college canteen serve for lunch yesterday?' },
             { from: 'ai', text: 'Yesterday your canteen served masala dosa with sambar and coconut chutney, followed by filter coffee. ☕' },
           ]} />

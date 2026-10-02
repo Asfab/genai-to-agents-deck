@@ -23,21 +23,21 @@ export default function ChainOfThought() {
         My train leaves Ernakulam at <b>6:40 AM</b>. The journey takes <b>9 h 35 min</b> and it's running <b>25 min late</b>. When do I reach Bengaluru?
       </Reveal>
       <Grid cols={2} style={{ gridTemplateColumns: '1fr 1.3fr' }}>
-        <Reveal at={1} className="card flat" style={{ justifyContent: 'space-between' }}>
+        <Reveal at={1} className="card flat" style={{ justifyContent: 'center', gap: 36 }}>
           <Label>Direct answer</Label>
           <div className="col" style={{ gap: 12 }}>
             <div style={{ font: '700 120px/1 var(--font-display)', letterSpacing: '-.04em', color: 'var(--rose)' }}>4:15 PM</div>
             <div className="body">Confident… and forgot the 25-minute delay. ✗</div>
           </div>
         </Reveal>
-        <Reveal at={2} className="card tint" style={{ justifyContent: 'space-between' }}>
+        <Reveal at={2} className="card tint" style={{ justifyContent: 'center', gap: 36 }}>
           <Label>+ “Think step by step”</Label>
-          <ol className="col mono" style={{ gap: 18, listStyle: 'none', fontSize: 'var(--fs-body)' }}>
+          <ol className="col mono" style={{ gap: 18, listStyle: 'none', fontSize: 'var(--fs-h3)' }}>
             <li>1 · 6:40 AM + 9 h → <b>3:40 PM</b></li>
             <li>2 · 3:40 PM + 35 min → <b>4:15 PM</b></li>
             <li>3 · 4:15 PM + 25 min delay → <b className="accent">4:40 PM ✓</b></li>
           </ol>
-          <div className="small">Each written step becomes context for the next token.</div>
+          <div className="body">Each written step becomes context for the next token.</div>
         </Reveal>
       </Grid>
     </Slide>

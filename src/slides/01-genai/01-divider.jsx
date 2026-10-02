@@ -13,7 +13,7 @@ export const meta = {
 **Transition:** "Before the theory, let's see how much of this you've already been using."`,
 }
 
-const topics = ['AI → ML → DL → GenAI', 'Next-token prediction', 'Tokens & training', 'Attention', 'Limits', 'Use cases & RAG']
+const topics = ['AI → ML → DL → GenAI', 'Next-token prediction', 'Training & attention', 'Limits & use cases']
 
 export default function Divider() {
   return (

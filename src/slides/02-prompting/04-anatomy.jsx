@@ -21,11 +21,11 @@ You don't need all six every time. Short question → task + context is often en
 }
 
 const parts = [
-  { key: 'role', name: 'Role', hint: 'Who should answer?', text: 'You are a placement mentor at an Indian engineering college.' },
+  { key: 'role', name: 'Role', hint: 'Who should answer?', text: 'You are a placement mentor at an engineering college.' },
   { key: 'task', name: 'Task', hint: 'What exactly to do', text: 'Review my resume summary and rewrite it.' },
-  { key: 'ctx', name: 'Context', hint: 'What it can’t know', text: '3rd-year CSE, applying for SDE internships. Built a React app used by 200 students.' },
-  { key: 'fmt', name: 'Format', hint: 'Shape of the answer', text: 'Give 3 issues as bullets, then the new summary in under 50 words.' },
-  { key: 'con', name: 'Constraints', hint: 'Rules & limits', text: 'No buzzwords like “passionate”. Don’t invent achievements.' },
+  { key: 'ctx', name: 'Context', hint: 'What it can’t know', text: '3rd-year CSE, aiming for SDE internships. Built a React app with 200 users.' },
+  { key: 'fmt', name: 'Format', hint: 'Shape of the answer', text: '3 issues as bullets, then a new summary (≤ 50 words).' },
+  { key: 'con', name: 'Constraints', hint: 'Rules & limits', text: 'No buzzwords like “passionate”. Don’t invent facts.' },
   { key: 'ex', name: 'Examples', hint: 'Show what good looks like', text: 'Style: “Built X that did Y for Z users.”' },
 ]
 

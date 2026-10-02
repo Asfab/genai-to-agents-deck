@@ -29,9 +29,9 @@ const res = [
 export default function Resources() {
   return (
     <Slide section="industry" kicker="Your career" title={<>Learn it <Em>free</Em>, starting tonight</>}>
-      <Stagger className="grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)', gridTemplateRows: 'repeat(2, 1fr)' }}>
+      <Stagger className="grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)', gridTemplateRows: 'repeat(3, 1fr)' }}>
         {res.map((r, i) => (
-          <div key={r.title} className={`card ${i < 2 ? 'tint' : ''}`} style={{ flex: 1, flexDirection: 'row', gap: 28, alignItems: 'center' }}>
+          <div key={r.title} className={`card ${i < 2 ? 'tint' : ''}`} style={{ flex: 1, flexDirection: 'row', gap: 32, alignItems: 'center', padding: '24px 40px' }}>
             <div style={{ fontSize: 56, lineHeight: 1, flex: 'none' }}>{r.icon}</div>
             <div className="col" style={{ gap: 10, minWidth: 0 }}>
               <div className="card-title">{r.title}</div>
