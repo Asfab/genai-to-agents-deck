@@ -1,0 +1,69 @@
+/* ─────────────────────────────────────────────────────────────
+   Design tokens — the ONLY place colours, fonts and sizes live.
+   Change something here and every slide follows.
+   Canvas is a fixed 1920×1080; all sizes below are canvas pixels.
+   ───────────────────────────────────────────────────────────── */
+:root {
+  /* surfaces (light, projector-friendly) */
+  --bg: #FAFAF7;
+  --surface: #FFFFFF;
+  --surface-2: #F2F1EC;
+  --line: #E4E2DA;
+  --line-strong: #CFCCC1;
+
+  /* ink */
+  --ink: #111114;
+  --ink-2: #3D3D45;
+  --muted: #6B6B76;
+  --faint: #A3A3AD;
+
+  /* brand accent + section hues (set per slide via data-section) */
+  --blue: #0F62FE;
+  --violet: #6D28D9;
+  --amber: #C2410C;
+  --emerald: #047857;
+  --rose: #BE123C;
+  --cyan: #0E7490;
+
+  --accent: var(--blue);
+
+  /* type */
+  --font-display: 'Inter Tight', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  --fs-hero: 148px;   /* title / section dividers */
+  --fs-title: 76px;   /* slide headline */
+  --fs-h2: 48px;
+  --fs-h3: 36px;
+  --fs-lede: 36px;    /* sub-headline under title */
+  --fs-body: 30px;    /* minimum readable on a projector */
+  --fs-small: 24px;
+  --fs-kicker: 20px;
+
+  /* layout */
+  --pad-x: 96px;
+  --pad-top: 72px;
+  --pad-bottom: 88px;
+  --gap: 32px;
+  --radius: 24px;
+  --radius-sm: 14px;
+  --shadow: 0 1px 2px rgba(17,17,20,.04), 0 8px 28px rgba(17,17,20,.06);
+
+  /* motion */
+  --ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+/* Section hues: <Slide section="genai"> sets data-section */
+[data-section='opening']   { --accent: var(--blue); }
+[data-section='genai']     { --accent: var(--violet); }
+[data-section='prompting'] { --accent: var(--amber); }
+[data-section='agents']    { --accent: var(--blue); }
+[data-section='industry']  { --accent: var(--emerald); }
+
+/* derived from whichever accent is active (re-computed inside each section) */
+:root, [data-section] {
+  --accent-soft: color-mix(in srgb, var(--accent) 8%, white);
+  --accent-line: color-mix(in srgb, var(--accent) 26%, white);
+}

@@ -1,0 +1,45 @@
+/* Phone remote / speaker view. Uses the same tokens as the slides. */
+body:has(.remote) { overflow: auto; }
+.remote { min-height: 100dvh; display: flex; flex-direction: column; background: var(--bg); color: var(--ink); font-family: var(--font-body); padding: env(safe-area-inset-top) 0 0; user-select: none; -webkit-user-select: none; }
+.r-top { display: flex; align-items: center; gap: 10px; padding: 14px 18px; font-size: 14px; color: var(--muted); border-bottom: 1px solid var(--line); }
+.r-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--faint); }
+.r-dot.on { background: var(--emerald); box-shadow: 0 0 0 4px color-mix(in srgb, var(--emerald) 18%, transparent); }
+.r-count { margin-left: auto; font-family: var(--font-mono); color: var(--ink-2); }
+
+.r-timers { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); }
+.r-timers div { padding: 10px 18px; display: flex; flex-direction: column; gap: 2px; }
+.r-timers div + div { border-left: 1px solid var(--line); }
+.r-timers small { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.r-timers b { font: 600 22px/1.2 var(--font-mono); }
+
+.r-main { flex: 1; padding: 20px 20px 150px; overflow-y: auto; }
+.r-section { font: 600 12px/1 var(--font-body); letter-spacing: .16em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+.r-title { font: 700 26px/1.15 var(--font-display); letter-spacing: -.02em; margin-bottom: 16px; }
+.r-notes { font-size: 19px; line-height: 1.55; color: var(--ink-2); display: flex; flex-direction: column; gap: 12px; }
+.r-notes ul { padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+.r-notes b { color: var(--ink); }
+.r-next { margin-top: 22px; padding: 12px 14px; border-radius: 12px; background: var(--surface-2); font-size: 15px; color: var(--muted); }
+.r-empty { color: var(--muted); font-size: 17px; padding: 20px 0; }
+
+.r-controls { position: fixed; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: 1fr 64px 1.6fr; gap: 10px; padding: 12px 12px calc(12px + env(safe-area-inset-bottom)); background: linear-gradient(transparent, var(--bg) 30%); }
+.r-btn { height: 96px; border: 0; border-radius: 20px; font: 700 22px/1 var(--font-display); cursor: pointer; touch-action: manipulation; transition: transform .08s; }
+.r-btn:active { transform: scale(.96); }
+.r-btn:disabled { opacity: .4; }
+.r-btn.back { background: var(--surface-2); color: var(--ink); }
+.r-btn.list { background: var(--surface-2); color: var(--ink-2); font-size: 24px; }
+.r-btn.next { background: var(--blue); color: #fff; }
+
+.r-sheet { position: fixed; inset: 0; background: rgba(17,17,20,.35); display: flex; align-items: flex-end; z-index: 10; }
+.r-sheet-inner { width: 100%; max-height: 75dvh; overflow-y: auto; background: #fff; border-radius: 22px 22px 0 0; padding: 8px 0 calc(16px + env(safe-area-inset-bottom)); }
+.r-sheet-head { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; position: sticky; top: 0; background: #fff; border-bottom: 1px solid var(--line); }
+.r-sheet-head button { border: 0; background: none; color: var(--blue); font: 500 14px var(--font-body); }
+.r-sheet-inner > button { display: flex; gap: 14px; width: 100%; text-align: left; padding: 14px 18px; border: 0; background: none; font: 400 16px/1.3 var(--font-body); color: var(--ink-2); }
+.r-sheet-inner > button span { font-family: var(--font-mono); color: var(--faint); }
+.r-sheet-inner > button.cur { background: var(--accent-soft); color: var(--ink); font-weight: 600; }
+
+/* laptop presenter window: notes larger, buttons not fixed */
+.remote.wide .r-main { padding: 28px 40px 140px; }
+.remote.wide .r-title { font-size: 34px; }
+.remote.wide .r-notes { font-size: 24px; max-width: 900px; }
+.remote.wide .r-controls { max-width: 700px; left: auto; }
+.remote.wide .r-btn { height: 72px; }
