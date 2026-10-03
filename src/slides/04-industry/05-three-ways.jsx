@@ -11,7 +11,7 @@ export const meta = {
 
 **Ask:** "Who here would pick the UI? The CLI? Bob?" — CSE students usually pick CLI. Good: that's the one recruiters can see on your GitHub.
 
-**Transition:** "Enough slides. Let's build one live."`,
+**Transition:** "Enough slides. Let's watch one being built." → play the recorded watsonx Orchestrate demo, then come back to the deck.`,
 }
 
 const Col = ({ at, num, title, who, lede, best, children }) => (

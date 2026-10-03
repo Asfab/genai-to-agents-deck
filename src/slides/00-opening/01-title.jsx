@@ -9,7 +9,7 @@ export const meta = {
 
 **Opening question:** "How many of you used ChatGPT, Gemini or Claude this week?" (hands up). "And how many of you had it *do* something for you, not just answer?" That gap is today's talk.
 
-- ~95 minutes, four acts, live demos in Act 4
+- ~95 minutes, four acts, recorded demos in Act 4
 - Ask questions anytime`,
 }
 

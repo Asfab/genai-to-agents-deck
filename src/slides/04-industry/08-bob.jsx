@@ -19,7 +19,7 @@ Point: *the same "agent" idea from the agents section — applied to writing sof
 
 **Ask:** "How many of you used an AI coding assistant for your last lab or project?" Then: "Did it plan, or just autocomplete?"
 
-**Transition:** "Let's watch Bob build the TicketTown agent for us."`,
+**Transition:** "Let's watch Bob build the TicketTown agent for us." → play the recorded IBM Bob demo, then come back to the deck.`,
 }
 
 const stats = [

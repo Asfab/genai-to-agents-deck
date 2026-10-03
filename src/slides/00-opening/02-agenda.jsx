@@ -19,7 +19,7 @@ const acts = [
   { num: '01', icon: Brain, title: 'Generative AI & LLMs', text: 'What they are, how they predict, where they shine.', section: 'genai' },
   { num: '02', icon: PenLine, title: 'Prompt Engineering', text: 'Turning vague asks into reliable results.', section: 'prompting' },
   { num: '03', icon: Bot, title: 'AI Agents', text: 'Tools, memory, planning and orchestration.', section: 'agents' },
-  { num: '04', icon: Building2, title: 'Industry & Careers', text: 'watsonx Orchestrate, Bob, live demos, Q&A.', section: 'industry' },
+  { num: '04', icon: Building2, title: 'Industry & Careers', text: 'watsonx Orchestrate, Bob, demos, Q&A.', section: 'industry' },
 ]
 
 export default function Agenda() {
