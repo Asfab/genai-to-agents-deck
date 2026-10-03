@@ -15,7 +15,7 @@ export const meta = {
 
 **Ask:** "Which one have you done this week?" (Be honest — I've done all six.)
 
-**Transition:** "Now the good part — prompts you can use tonight."`,
+**Transition:** "Enough theory. Let's practise — your turn."`,
 }
 
 const mistakes = [

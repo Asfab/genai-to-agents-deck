@@ -4,7 +4,9 @@ import { Brain, Hand } from 'lucide-react'
 export const meta = {
   title: 'What an LLM cannot do alone',
   steps: 2,
-  notes: `Scenario: you ask an LLM to plan a weekend trip to Munnar with 4 friends.
+  notes: `**Asfab's last slide in Act 1 → hand over to Pranav after this one.**
+
+Scenario: you ask an LLM to plan a weekend trip to Munnar with 4 friends.
 
 - **It can think & write** — suggest places, draft a day plan, estimate a budget, write the group message. Great.
 - **But on its own it cannot act** — it can't check this weekend's weather, see which buses have seats, book the homestay, or send the message. It has no hands, no live data.

@@ -30,7 +30,7 @@ export default function ThankYou() {
         <Stagger delay={0.4} className="grid" style={{ gridTemplateColumns: `repeat(${presenters.length}, minmax(0, 1fr))`, flex: 'none' }}>
           {presenters.map((p, i) => (
             <div key={i} className="card" style={{ flex: 1, gap: 18 }}>
-              <div className="label">{p.acts.map((a) => ACTS[a - 1]).join(' · ')}</div>
+              <div className="label">{p.label || p.acts.map((a) => ACTS[a - 1]).join(' · ')}</div>
               <div className="col" style={{ gap: 4 }}>
                 <div className="card-title">{p.name}</div>
                 <div className="small">{p.role}</div>

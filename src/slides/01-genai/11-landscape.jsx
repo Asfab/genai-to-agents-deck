@@ -3,7 +3,9 @@ import { Slide, Reveal, Stagger, Em, Label } from '../../components'
 export const meta = {
   title: 'Model landscape',
   steps: 1,
-  notes: `Two camps — don't rank them, they leapfrog every few months.
+  notes: `**Pranav takes over here.** Opening line: \"Thanks, Asfab. So LLMs can think but can't act yet. Before we get to agents, let's see who builds these models and where they're genuinely useful today.\"
+
+Two camps — don't rank them, they leapfrog every few months.
 
 - **Closed models** — you use them through an app or a paid API; the weights stay with the company. GPT (OpenAI), Claude (Anthropic), Gemini (Google).
 - **Open-weight models** (build in on the right) — you can download and run them yourself, fine-tune them, keep data in-house. Llama (Meta), **Granite (IBM** — built for enterprise, Apache 2.0 licence), Mistral, DeepSeek, Qwen, and Indian-language efforts like Sarvam.
