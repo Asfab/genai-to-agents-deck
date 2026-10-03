@@ -5,7 +5,7 @@ import { presenters } from '../../presenters'
 export const meta = {
   title: 'From GenAI to AI Agents',
   steps: 0,
-  notes: `Welcome everyone. Introduce yourself and your co-presenters (who takes which act).
+  notes: `Welcome everyone. Introduce yourself and Pranav: Asfab takes GenAI and Agents, Pranav takes Prompting and Industry.
 
 **Opening question:** "How many of you used ChatGPT, Gemini or Claude this week?" (hands up). "And how many of you had it *do* something for you, not just answer?" That gap is today's talk.
 
